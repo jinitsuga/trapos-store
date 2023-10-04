@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         "trapo-green": "#22c55e",
+        "trapo-darkGreen": "#194727",
         "trapo-black": "#0c0a09",
         "trapo-brown": "#1c1917",
         "trapo-red": "#e11d48",

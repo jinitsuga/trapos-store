@@ -3,9 +3,9 @@ import { Navbar } from "./Navbar";
 
 export default function Header() {
   return (
-    <header className="flex h-[10%] items-center justify-around bg-pink-400">
-      <div>
-        <span>Trapos logo</span>
+    <header className="flex h-[10%] items-center justify-around font-bold text-xl">
+      <div className="flex items-center">
+        <span>Logo</span>
         <Navbar />
       </div>
       <div>
