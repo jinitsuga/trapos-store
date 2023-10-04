@@ -1,5 +1,5 @@
 import * as React from "react";
 
-export default function Navbar() {
+export function Navbar() {
   return <nav></nav>;
 }
