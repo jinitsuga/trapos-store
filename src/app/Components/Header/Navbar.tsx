@@ -1,9 +1,17 @@
 import * as React from "react";
 
-export function Navbar() {
+type NavTypes = {
+  vertical?: boolean;
+};
+
+export function Navbar({ vertical }: NavTypes) {
   return (
     <nav className="mx-2 text-base font-medium">
-      <ul className="flex bg-trapo-brown p-2 rounded">
+      <ul
+        className={`flex ${
+          vertical == true ? "flex-col" : ""
+        } bg-trapo-brown p-2 rounded`}
+      >
         <li className="mx-4 hover:text-trapo-darkGreen">
           <a href="#">Tienda</a>
         </li>
