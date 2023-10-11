@@ -9,8 +9,13 @@ export default function Header() {
         <Navbar />
       </div>
       <div>
-        <ul>
+        <ul className="flex gap-2 text-[16px]">
           <li>Cart icon</li>
+          <li>
+            <a href="/login" className="hover:text-trapo-darkGreen">
+              Ingresar{" "}
+            </a>
+          </li>
         </ul>
       </div>
     </header>

@@ -1,4 +1,5 @@
 export default function Home() {
+  console.log(process.env.MONGO_URI);
   return (
     <main className="flex flex-col justify-center items-center">
       <section className="flex flex-col bg-trapo-brown h-[400px] w-full items-center justify-center">
