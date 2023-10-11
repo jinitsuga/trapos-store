@@ -13,7 +13,7 @@ export default function Header() {
           <li>Cart icon</li>
           <li>
             <a href="/login" className="hover:text-trapo-darkGreen">
-              Ingresar{" "}
+              Ingresar
             </a>
           </li>
         </ul>
