@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Navbar } from "./../Header/Navbar";
+import { Navbar } from "../Header/Navbar";
 
 export default function Footer() {
   return (
