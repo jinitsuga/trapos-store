@@ -1,7 +1,18 @@
 "use client";
+import * as React from "react";
 import { UploadButton } from "../utils/uploadthing";
+import Image from "next/image";
+
+export type Product = {
+  name: string;
+  description?: string;
+  price: number;
+  type: string;
+  img: string;
+} | null;
 
 export default function Dashboard() {
+  const [product, setProduct] = React.useState<Product>(null);
   return (
     <section className="flex flex-col justify-center items-center p-8">
       <UploadButton
