@@ -12,7 +12,7 @@ export default function Header() {
         <ul className="flex gap-2 text-[16px]">
           <li>Cart icon</li>
           <li>
-            <a href="/login" className="hover:text-trapo-darkGreen">
+            <a href="/api/auth/signin" className="hover:text-trapo-darkGreen">
               Ingresar
             </a>
           </li>
