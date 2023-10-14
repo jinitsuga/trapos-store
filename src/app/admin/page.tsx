@@ -4,15 +4,26 @@ import { UploadButton } from "../utils/uploadthing";
 import Image from "next/image";
 
 export type Product = {
-  name: string;
+  name?: string;
   description?: string;
-  price: number;
-  type: string;
-  img: string;
+  price?: number;
+  type?: string;
+  img?: string;
 } | null;
 
 export default function Dashboard() {
-  const [product, setProduct] = React.useState<Product>(null);
+  const [product, setProduct] = React.useState<Product>({
+    name: "",
+    description: "",
+    price: 0,
+    type: "",
+    img: "",
+  });
+
+  const updateProduct = (e: React.FormEvent<HTMLInputElement>) => {
+    setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
+  };
+
   return (
     <section className="flex flex-col justify-center items-center p-8">
       <UploadButton
