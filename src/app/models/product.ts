@@ -7,7 +7,7 @@ export interface ProductModel extends mongoose.Document {
   price: number;
   img: string;
 }
-const ProductSchema = new mongoose.Schema<ProductModel>({
+const productSchema = new mongoose.Schema<ProductModel>({
   name: {
     type: String,
     required: true,
@@ -30,5 +30,6 @@ const ProductSchema = new mongoose.Schema<ProductModel>({
   },
 });
 
-export default mongoose.models.ProductModel ||
-  mongoose.model<ProductModel>("Product", ProductSchema);
+const Product = mongoose.model<ProductModel>("Product", productSchema);
+
+export default Product;

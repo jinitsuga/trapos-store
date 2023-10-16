@@ -4,7 +4,7 @@ declare global {
   var mongoose: any;
 }
 
-const MONGO_URI = process.env.mongo_uri!;
+const MONGO_URI = process.env.MONGO_URI!;
 
 if (!MONGO_URI) {
   throw new Error("redefine mongodb_uri environment variable");
@@ -33,6 +33,7 @@ async function connectDb() {
     cached.promise = null;
     throw e;
   }
+  console.log("CONNECTED TO MONGODB");
   return cached.conn;
 }
 
