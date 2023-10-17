@@ -25,6 +25,16 @@ export default function Dashboard() {
     img: "",
   });
   console.log(product);
+
+  const validateFields = () => {
+    const { name, price, type, img } = product;
+    if (name == "" || price == 0 || type == "" || img == "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const updateProduct = (e: InputEvents) => {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
   };
@@ -120,6 +130,15 @@ export default function Dashboard() {
               <option value="gorras">Gorras</option>
               <option value="tazas">Tazas</option>
             </select>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+              className="bg-white text-black text-center leading-5 text-2xl rounded w-[120px]
+               h-[40px] mt-4 self-center p-2 hover:bg-green-200 active:scale-105"
+            >
+              Agregar
+            </button>
           </form>
         </div>
       )}
