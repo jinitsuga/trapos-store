@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import Uploads from "./ProductUploads";
+import Catalogue from "./Catalogue";
 
 type Displays = "upload" | "catalogue";
 
@@ -13,13 +14,15 @@ export default function Dashboard() {
 
   return (
     <section className="flex flex-col items-center justify-center">
-      <ul className="flex gap-8 text-white text-xl p-4 mt-10">
+      <ul className="flex gap-8 text-white text-lg p-4 mt-10">
         <li>
           <button
             onClick={() => {
               changeDisplay("upload");
             }}
-            className="w-[175px] rounded border-2 border-white p-2  hover:text-stone-400"
+            className={`${
+              display == "upload" ? "text-stone-400 border-stone-400" : ""
+            } w-[175px] rounded border-2 border-white p-2 hover:text-stone-400`}
           >
             Subir productos
           </button>
@@ -29,13 +32,16 @@ export default function Dashboard() {
             onClick={() => {
               changeDisplay("catalogue");
             }}
-            className=" w-[175px] rounded border-2 border-white p-2 hover:text-stone-400"
+            className={`${
+              display == "catalogue" ? "text-stone-400 border-stone-400" : ""
+            } w-[175px] rounded border-2 border-white p-2 hover:text-stone-400`}
           >
             Ver catálogo
           </button>
         </li>
       </ul>
       {display == "upload" && <Uploads />}
+      {display == "catalogue" && <Catalogue />}
     </section>
   );
 }
