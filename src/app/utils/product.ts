@@ -1,4 +1,4 @@
-import { type Product } from "../Components/ProductUploads";
+import { type Product } from "../Components/Dashboard/ProductUploads";
 export const uploadProduct = async (prod: Product) => {
   const response = await fetch("/api/product", {
     method: "POST",

@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import { UploadButton } from "../utils/uploadthing";
+import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
-import { uploadProduct } from "../utils/product";
+import { uploadProduct } from "../../utils/product";
 
 export type Product = {
   name?: string;
@@ -48,7 +48,7 @@ export default function Uploads() {
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
 
   return (
-    <section className="flex flex-col text-white justify-center items-center p-8">
+    <div className="flex flex-col text-white justify-center items-center p-8">
       {!uploaded ? (
         <div>
           {product.img == "" && (
@@ -182,6 +182,6 @@ export default function Uploads() {
           Subir otro producto
         </button>
       )}
-    </section>
+    </div>
   );
 }
