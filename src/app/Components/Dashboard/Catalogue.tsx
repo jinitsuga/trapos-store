@@ -1,5 +1,7 @@
 "use client";
 import * as React from "react";
+import product from "@/app/models/product";
+import { searchCategory } from "@/app/utils/searchCategory";
 
 const Button = ({ btnName, selected, children, ...buttonProps }: any) => {
   return (
@@ -16,15 +18,22 @@ const Button = ({ btnName, selected, children, ...buttonProps }: any) => {
   );
 };
 
-type Categories = "camisetas" | "canguros" | "gorras" | "tazas" | "todos" | "";
+export type Categories =
+  | "camisetas"
+  | "canguros"
+  | "gorras"
+  | "tazas"
+  | "todos"
+  | "";
 
 export default function Catalogue() {
   const [category, setCategory] = React.useState<Categories | "">("todos");
-  console.log(category);
   const changeCategory = (cat: Categories) => {
     setCategory(cat);
   };
-
+  React.useEffect(() => {
+    const resp = searchCategory("camisetas");
+  }, [category]);
   return (
     <div className="flex flex-col justify-center items-center">
       <h3 className="text-white text-xl m-2">Elige lo que quieras ver</h3>

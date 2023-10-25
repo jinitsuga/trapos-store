@@ -24,3 +24,5 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   return NextResponse.json("producto agregado");
 }
+
+// Add and export another function for each request method (GET, PUT)
