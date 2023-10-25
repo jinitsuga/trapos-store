@@ -1,5 +1,7 @@
 "use client";
 import * as React from "react";
+import useSWR from "swr";
+import fetcher from "@/app/utils/fetcher";
 import product from "@/app/models/product";
 import { searchCategory } from "@/app/utils/searchCategory";
 
@@ -26,14 +28,18 @@ export type Categories =
   | "todos"
   | "";
 
+// Tal vez explorar como deshabilitar el caching automatico de data
+
 export default function Catalogue() {
   const [category, setCategory] = React.useState<Categories | "">("todos");
+  const { data, error, isLoading }: any = useSWR(
+    `/../api/categories?cat=${category}`,
+    fetcher
+  );
+
   const changeCategory = (cat: Categories) => {
     setCategory(cat);
   };
-  React.useEffect(() => {
-    const resp = searchCategory("camisetas");
-  }, [category]);
   return (
     <div className="flex flex-col justify-center items-center">
       <h3 className="text-white text-xl m-2">Elige lo que quieras ver</h3>
@@ -100,6 +106,9 @@ export default function Catalogue() {
           </Button>
         </li>
       </ul>
+      {error && <span>Ha ocurrido un error.</span>}
+      {isLoading && <div> Cargando... </div>}
+      {data ? <div> productos go here </div> : ""}
     </div>
   );
 }

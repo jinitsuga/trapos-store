@@ -50,7 +50,7 @@ export default function Uploads() {
   return (
     <div className="flex flex-col text-white justify-center items-center p-8">
       {!uploaded ? (
-        <div>
+        <>
           {product.img == "" && (
             <>
               <h3 className="text-2xl mb-4 ">
@@ -81,7 +81,7 @@ export default function Uploads() {
           )}
           {/* If image is uploaded, load rest of the form */}
           {product.img !== "" && (
-            <div className="flex text-xl flex-col items-center justify-center gap-4">
+            <div className="flex text-xl mb-20 flex-col items-center justify-center gap-4">
               <Image
                 width={150}
                 height={200}
@@ -170,7 +170,7 @@ export default function Uploads() {
               </form>
             </div>
           )}
-        </div>
+        </>
       ) : (
         <button
           onClick={() => {
