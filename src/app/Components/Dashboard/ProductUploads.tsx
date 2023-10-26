@@ -10,8 +10,9 @@ export type Product = {
   price?: number;
   type?: string;
   img?: string;
+  _id?: string;
 };
-type InputEvents =
+export type InputEvents =
   | React.FormEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLTextAreaElement>
   | React.ChangeEvent<HTMLSelectElement>;

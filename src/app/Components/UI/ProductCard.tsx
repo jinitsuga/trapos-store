@@ -11,7 +11,9 @@ export default function ProductCard({
   description,
   type,
   admin,
+  _id,
 }: CardTypes) {
+  console.log(_id);
   return (
     <div className="rounded flex text-black bg-white items-center gap-4 border-2 pb-4 px-4 w-[300px] justify-center flex-col">
       <Image
