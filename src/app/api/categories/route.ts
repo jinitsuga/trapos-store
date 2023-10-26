@@ -23,21 +23,21 @@ export async function GET(req: NextRequest, res: NextResponse) {
     case "gorras":
       try {
         const prods = await product.find({ type: "gorras" });
-        return Response.json(prods);
+        return Response.json({ prods });
       } catch (err) {
         return Response.error();
       }
     case "tazas":
       try {
         const prods = await product.find({ type: "tazas" });
-        return Response.json(prods);
+        return Response.json({ prods });
       } catch (err) {
         return Response.error();
       }
     case "canguros":
       try {
         const prods = await product.find({ type: "gorras" });
-        return Response.json(prods);
+        return Response.json({ prods });
       } catch (err) {
         return Response.error();
       }

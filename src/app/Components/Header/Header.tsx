@@ -3,7 +3,7 @@ import { Navbar } from "./Navbar";
 
 export default function Header() {
   return (
-    <header className="flex sticky top-0 h-[10%] p-4 items-center justify-around font-bold text-xl">
+    <header className="flex sticky z-20 top-0 bg-black h-[10%] p-4 items-center justify-around font-bold text-xl">
       <div className="flex items-center">
         <span>Logo</span>
         <Navbar />

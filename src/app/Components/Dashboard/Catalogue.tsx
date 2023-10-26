@@ -2,6 +2,8 @@
 import * as React from "react";
 import useSWR from "swr";
 import fetcher from "@/app/utils/fetcher";
+import ProductCard from "../UI/ProductCard";
+import { Product } from "./ProductUploads";
 
 const Button = ({ btnName, selected, children, ...buttonProps }: any) => {
   return (
@@ -35,13 +37,19 @@ export default function Catalogue() {
     fetcher
   );
 
+  const products =
+    data &&
+    data.prods.map((item: Product, id: number) => {
+      return <ProductCard key={id} {...item} admin={true} />;
+    });
+
   const changeCategory = (cat: Categories) => {
     setCategory(cat);
   };
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <h3 className="text-white text-xl m-2">Elige lo que quieras ver</h3>
-      <ul className="flex">
+      <ul className="flex mb-8">
         <li>
           <Button
             onClick={() => {
@@ -106,7 +114,14 @@ export default function Catalogue() {
       </ul>
       {error && <span>Ha ocurrido un error.</span>}
       {isLoading && <div> Cargando... </div>}
-      {data ? <div> productos go here </div> : ""}
+      {data ? (
+        <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
+          {" "}
+          {products}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
