@@ -2,8 +2,6 @@
 import * as React from "react";
 import useSWR from "swr";
 import fetcher from "@/app/utils/fetcher";
-import product from "@/app/models/product";
-import { searchCategory } from "@/app/utils/searchCategory";
 
 const Button = ({ btnName, selected, children, ...buttonProps }: any) => {
   return (
@@ -41,7 +39,7 @@ export default function Catalogue() {
     setCategory(cat);
   };
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center text-white">
       <h3 className="text-white text-xl m-2">Elige lo que quieras ver</h3>
       <ul className="flex">
         <li>
