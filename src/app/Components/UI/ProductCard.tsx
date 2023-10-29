@@ -59,7 +59,16 @@ export default function ProductCard({
           Agregar al carrito
         </button>
       )}
-      {showModal && <EditModal setModal={setShowModal} />}
+      {showModal && (
+        <EditModal
+          img={img}
+          name={name}
+          price={price}
+          description={description}
+          type={type}
+          setModal={setShowModal}
+        />
+      )}
     </div>
   );
 }

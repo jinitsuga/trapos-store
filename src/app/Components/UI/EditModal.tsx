@@ -7,7 +7,7 @@ type ModalTypes = Product & {
   setModal: Function;
 };
 
-export default function EditModal({ setModal, ...props }: ModalTypes) {
+export default function EditModal({ ...props }: ModalTypes) {
   const [product, setProduct] = React.useState<Product>({
     name: "",
     description: "",
@@ -21,7 +21,7 @@ export default function EditModal({ setModal, ...props }: ModalTypes) {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         console.log("click trigger");
         // Close modal function
-        setModal(false);
+        props.setModal(false);
       }
     };
 
@@ -43,7 +43,7 @@ export default function EditModal({ setModal, ...props }: ModalTypes) {
   return (
     <div className="flex fixed inset-0 items-center justify-center">
       <div ref={modalRef}>
-        <form>
+        <form className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white">
           <label htmlFor="name" className="mb-1">
             Nombre del producto:
           </label>
