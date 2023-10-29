@@ -3,7 +3,11 @@ import * as React from "react";
 import { Product } from "../Dashboard/ProductUploads";
 import { InputEvents } from "../Dashboard/ProductUploads";
 
-export default function EditModal({ ...props }: Product) {
+type ModalTypes = Product & {
+  setModal: Function;
+};
+
+export default function EditModal({ setModal, ...props }: ModalTypes) {
   const [product, setProduct] = React.useState<Product>({
     name: "",
     description: "",
@@ -12,14 +16,33 @@ export default function EditModal({ ...props }: Product) {
     img: "",
   });
 
+  React.useEffect(() => {
+    const checkForClickOutside = (e: any) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        console.log("click trigger");
+        // Close modal function
+        setModal(false);
+      }
+    };
+
+    document.addEventListener("click", checkForClickOutside, true);
+
+    return () => {
+      console.log("event unmounted");
+      document.removeEventListener("click", checkForClickOutside);
+    };
+  }, []);
+
+  const modalRef = React.useRef<HTMLDivElement | null>(null);
+
   const updateProduct = (e: InputEvents) => {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
   };
   const inputStyles =
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
   return (
-    <div>
-      <div>
+    <div className="flex fixed inset-0 items-center justify-center">
+      <div ref={modalRef}>
         <form>
           <label htmlFor="name" className="mb-1">
             Nombre del producto:

@@ -36,7 +36,6 @@ export default function Catalogue() {
     `/../api/categories?cat=${category}`,
     fetcher
   );
-  console.log(data.prods);
   const products =
     data &&
     data.prods.map((item: Product, id: number) => {

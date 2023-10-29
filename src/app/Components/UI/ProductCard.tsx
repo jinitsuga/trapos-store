@@ -1,6 +1,8 @@
+"use client";
 import * as React from "react";
 import { Product } from "../Dashboard/ProductUploads";
 import Image from "next/image";
+import EditModal from "./EditModal";
 
 type CardTypes = Product & { admin?: boolean };
 
@@ -14,6 +16,22 @@ export default function ProductCard({
   _id,
 }: CardTypes) {
   console.log(_id);
+
+  //   import Image from 'next/image'
+
+  // import { Image as ImageType } from 'lib/shopify/types'
+
+  // export default function ProductImage({ image, shadow = true }: { image: ImageType, shadow?: boolean }) {
+  //   const { url, altText } = image
+  //   return (
+  //     <div className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full ${shadow ? 'shadow-md' : ''}`}>
+  //       <Image className="absolute top-0 left-0 h-full w-full object-cover" src={url} fill alt={altText} />
+  //     </div>
+  //   )
+  // }
+
+  const [showModal, setShowModal] = React.useState<boolean>(false);
+
   return (
     <div className="rounded flex text-black bg-white items-center gap-4 border-2 pb-4 px-4 w-[300px] justify-center flex-col">
       <Image
@@ -30,7 +48,10 @@ export default function ProductCard({
         <span className="text-yellow-700 text-xl">${price}</span>
       </div>
       {admin ? (
-        <button className="rounded text-xl border-black border-2 p-1">
+        <button
+          onClick={() => setShowModal(true)}
+          className="rounded text-xl border-black border-2 p-1"
+        >
           Editar
         </button>
       ) : (
@@ -38,6 +59,7 @@ export default function ProductCard({
           Agregar al carrito
         </button>
       )}
+      {showModal && <EditModal setModal={setShowModal} />}
     </div>
   );
 }
