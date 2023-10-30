@@ -2,6 +2,7 @@
 import * as React from "react";
 import { Product } from "../Dashboard/ProductUploads";
 import { InputEvents } from "../Dashboard/ProductUploads";
+import { patchProduct } from "@/app/utils/product";
 
 type ModalTypes = Product & {
   setModal: Function;
@@ -9,17 +10,16 @@ type ModalTypes = Product & {
 
 export default function EditModal({ ...props }: ModalTypes) {
   const [product, setProduct] = React.useState<Product>({
-    name: "",
-    description: "",
-    price: 0,
-    type: "",
-    img: "",
+    name: props.name,
+    description: props.description,
+    price: props.price,
+    type: props.type,
+    img: props.img,
   });
 
   React.useEffect(() => {
     const checkForClickOutside = (e: any) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
-        console.log("click trigger");
         // Close modal function
         props.setModal(false);
       }
@@ -28,7 +28,6 @@ export default function EditModal({ ...props }: ModalTypes) {
     document.addEventListener("click", checkForClickOutside, true);
 
     return () => {
-      console.log("event unmounted");
       document.removeEventListener("click", checkForClickOutside);
     };
   }, []);
@@ -43,12 +42,19 @@ export default function EditModal({ ...props }: ModalTypes) {
   return (
     <div className="flex fixed inset-0 items-center justify-center">
       <div ref={modalRef}>
-        <form className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white">
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await patchProduct(product, props._id!);
+            props.setModal(false);
+          }}
+          className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white"
+        >
           <label htmlFor="name" className="mb-1">
             Nombre del producto:
           </label>
           <input
-            value={props.name}
+            value={product.name}
             onChange={(e) => {
               updateProduct(e);
             }}
@@ -61,7 +67,7 @@ export default function EditModal({ ...props }: ModalTypes) {
             Precio:
           </label>
           <input
-            value={props.price}
+            value={product.price}
             onChange={(e) => {
               updateProduct(e);
             }}
@@ -74,7 +80,7 @@ export default function EditModal({ ...props }: ModalTypes) {
             Descripción:
           </label>
           <textarea
-            value={props.description}
+            value={product.description}
             onChange={(e) => {
               updateProduct(e);
             }}
@@ -86,7 +92,7 @@ export default function EditModal({ ...props }: ModalTypes) {
             Categoría:
           </label>
           <select
-            value={props.type}
+            value={product.type}
             onChange={(e) => {
               updateProduct(e);
             }}
@@ -99,6 +105,12 @@ export default function EditModal({ ...props }: ModalTypes) {
             <option value="gorras">Gorras</option>
             <option value="tazas">Tazas</option>
           </select>
+          <button
+            type="submit"
+            className="rounded self-center bg-white text-black w-[80%] text-xl border-black border-2 p-1"
+          >
+            Hecho
+          </button>
         </form>
       </div>
     </div>

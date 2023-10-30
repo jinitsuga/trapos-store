@@ -15,8 +15,6 @@ export default function ProductCard({
   admin,
   _id,
 }: CardTypes) {
-  console.log(_id);
-
   //   import Image from 'next/image'
 
   // import { Image as ImageType } from 'lib/shopify/types'
@@ -67,6 +65,7 @@ export default function ProductCard({
           description={description}
           type={type}
           setModal={setShowModal}
+          _id={_id}
         />
       )}
     </div>

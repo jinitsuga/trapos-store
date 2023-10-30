@@ -10,3 +10,15 @@ export const uploadProduct = async (prod: Product) => {
     return true;
   } else return false;
 };
+
+export const patchProduct = async (prod: Product, id: string) => {
+  const response = await fetch(`/api/product?id=${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(prod),
+  });
+
+  if (response.status == 200) {
+    return true;
+  } else return false;
+};
