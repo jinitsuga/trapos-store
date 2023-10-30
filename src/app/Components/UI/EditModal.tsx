@@ -87,6 +87,7 @@ export default function EditModal({ ...props }: ModalTypes) {
             placeholder="Describe el producto brevemente"
             className={`${inputStyles}`}
             name="description"
+            maxLength={200}
           ></textarea>
           <label htmlFor="category" className="mb-1">
             Categoría:
