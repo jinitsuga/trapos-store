@@ -22,3 +22,15 @@ export const patchProduct = async (prod: Product, id: string) => {
     return true;
   } else return false;
 };
+
+export const deleteProduct = async (id: string) => {
+  const response = await fetch(`/api/product?id=${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.status == 200) {
+    return true;
+  } else {
+    return false;
+  }
+};

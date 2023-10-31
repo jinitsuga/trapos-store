@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Product } from "../Dashboard/ProductUploads";
 import { InputEvents } from "../Dashboard/ProductUploads";
-import { patchProduct } from "@/app/utils/product";
+import { deleteProduct, patchProduct } from "@/app/utils/product";
 
 type ModalTypes = Product & {
   setModal: Function;
@@ -16,6 +16,7 @@ export default function EditModal({ ...props }: ModalTypes) {
     type: props.type,
     img: props.img,
   });
+  const [showDelete, setShowDelete] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const checkForClickOutside = (e: any) => {
@@ -112,6 +113,46 @@ export default function EditModal({ ...props }: ModalTypes) {
           >
             Hecho
           </button>
+
+          {!showDelete ? (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setShowDelete(true);
+              }}
+              className="rounded self-center text-center bg-red-500 text-black h-10 w-[40%] 
+              text-sm border-black border-2 p-1"
+            >
+              Eliminar
+            </button>
+          ) : (
+            <ul className="flex items-center justify-center m-2 self-center gap-6">
+              Seguro?
+              <li>
+                <button
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    await deleteProduct(props._id!);
+                    props.setModal(false);
+                  }}
+                  className="bg-red-500 p-2 w-10"
+                >
+                  Si
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowDelete(false);
+                  }}
+                  className="border-2 border-white p-2"
+                >
+                  No
+                </button>
+              </li>
+            </ul>
+          )}
         </form>
       </div>
     </div>

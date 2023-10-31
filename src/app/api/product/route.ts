@@ -37,7 +37,7 @@ export async function PUT(req: NextRequest) {
     console.log(err);
   }
 
-  return Response.json("producto editado");
+  return Response.json({ success: true, data: body });
 }
 
 export async function DELETE(req: NextRequest) {
@@ -49,7 +49,7 @@ export async function DELETE(req: NextRequest) {
   } catch (err) {
     console.log(err);
   }
-  return Response.json("producto eliminado");
+  return Response.json({ success: true });
 }
 
 // Add and export another function for each request method (GET, PUT)
