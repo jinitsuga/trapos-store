@@ -40,4 +40,16 @@ export async function PUT(req: NextRequest) {
   return Response.json("producto editado");
 }
 
+export async function DELETE(req: NextRequest) {
+  const params = req.nextUrl.searchParams;
+  const id = params.get("id");
+
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+  }
+  return Response.json("producto eliminado");
+}
+
 // Add and export another function for each request method (GET, PUT)
