@@ -13,7 +13,7 @@ export function Navbar({ vertical }: NavTypes) {
         } bg-trapo-brown p-2 rounded`}
       >
         <li className="mx-4 hover:text-trapo-darkGreen">
-          <a href="#">Tienda</a>
+          <a href="/tienda">Tienda</a>
         </li>
         <li className="mx-4 hover:text-trapo-darkGreen">
           <a href="#">Contacto</a>

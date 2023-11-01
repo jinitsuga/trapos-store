@@ -41,7 +41,7 @@ export default function EditModal({ ...props }: ModalTypes) {
   const inputStyles =
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
   return (
-    <div className="flex fixed inset-0 items-center justify-center">
+    <div className="flex fixed inset-0 items-center z-20 justify-center">
       <div ref={modalRef}>
         <form
           onSubmit={async (e) => {
@@ -88,7 +88,7 @@ export default function EditModal({ ...props }: ModalTypes) {
             placeholder="Describe el producto brevemente"
             className={`${inputStyles}`}
             name="description"
-            maxLength={200}
+            maxLength={120}
           ></textarea>
           <label htmlFor="category" className="mb-1">
             Categoría:

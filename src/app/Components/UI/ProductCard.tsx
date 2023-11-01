@@ -31,29 +31,40 @@ export default function ProductCard({
   const [showModal, setShowModal] = React.useState<boolean>(false);
 
   return (
-    <div className="rounded flex text-black bg-white items-center gap-4 border-2 pb-4 px-4 w-[300px] justify-center flex-col">
-      <Image
+    <div className="rounded flex text-black bg-white items-center gap-2 border-2 max-w-[300px] justify-center flex-col">
+      {/* <Image
         width={300}
         height={175}
         className="justify-self-start h-auto max-w-[300px]"
         alt={`Imagen de ${name}`}
         src={img!}
-      ></Image>
-      <div className="text-left flex flex-col gap-2 w-full">
+      ></Image> */}
+      <div
+        className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full
+        }`}
+      >
+        <Image
+          className="absolute top-0 left-0 h-full w-full object-cover"
+          src={img!}
+          fill
+          alt={`Imagen de ${name}`}
+        />
+      </div>
+      <div className="text-left flex flex-col gap-2 ml-4 w-full">
         <span className="text-stone-400 text-sm">{type}</span>
         <h3 className="text-xl font-bold">{name}</h3>
-        <p className="text-[16px]">{description}</p>
+        <p className="text-[14px] h-[65px]">{description}</p>
         <span className="text-yellow-700 text-xl">${price}</span>
       </div>
       {admin ? (
         <button
           onClick={() => setShowModal(true)}
-          className="rounded text-xl border-black border-2 p-1"
+          className="rounded text-xl border-black border-2 mb-2 p-1"
         >
           Editar
         </button>
       ) : (
-        <button className="rounded border-black border-2 p-1">
+        <button className="rounded border-black border-2 mb-2 p-1">
           Agregar al carrito
         </button>
       )}
