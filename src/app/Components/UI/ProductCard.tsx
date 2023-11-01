@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import { Product } from "../Dashboard/ProductUploads";
+import Link from "next/link";
 import Image from "next/image";
 import EditModal from "./EditModal";
 
@@ -31,7 +32,11 @@ export default function ProductCard({
   const [showModal, setShowModal] = React.useState<boolean>(false);
 
   return (
-    <div className="rounded flex text-black bg-white items-center gap-2 border-2 max-w-[300px] justify-center flex-col">
+    <Link
+      href={"#"}
+      className="rounded flex text-black bg-white items-center pb-2 gap-2 border-2 w-[300px] 
+      hover:shadow-lg hover:shadow-green-800 justify-center flex-col"
+    >
       {/* <Image
         width={300}
         height={175}
@@ -51,7 +56,7 @@ export default function ProductCard({
         />
       </div>
       <div className="text-left flex flex-col gap-2 ml-4 w-full">
-        <span className="text-stone-400 text-sm">{type}</span>
+        <span className="text-stone-500 text-sm">{type}</span>
         <h3 className="text-xl font-bold">{name}</h3>
         <p className="text-[14px] h-[65px]">{description}</p>
         <span className="text-yellow-700 text-xl">${price}</span>
@@ -59,13 +64,13 @@ export default function ProductCard({
       {admin ? (
         <button
           onClick={() => setShowModal(true)}
-          className="rounded text-xl border-black border-2 mb-2 p-1"
+          className="rounded hover:bg-black hover:text-white text-xl border-black border-2 mb-2 p-1"
         >
           Editar
         </button>
       ) : (
         <button className="rounded border-black border-2 mb-2 p-1">
-          Agregar al carrito
+          Ver mas
         </button>
       )}
       {showModal && (
@@ -79,6 +84,6 @@ export default function ProductCard({
           _id={_id}
         />
       )}
-    </div>
+    </Link>
   );
 }

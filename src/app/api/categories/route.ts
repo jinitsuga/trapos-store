@@ -36,7 +36,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       }
     case "canguros":
       try {
-        const prods = await product.find({ type: "gorras" });
+        const prods = await product.find({ type: "canguros" });
         return Response.json({ prods });
       } catch (err) {
         return Response.error();
