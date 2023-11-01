@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Category from "../Components/UI/Category";
 import { categoryList } from "../utils/categories";
 
