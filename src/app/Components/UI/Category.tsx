@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function Category({ cat }: { cat: string }) {
   const lowerCaseCat = cat.toLowerCase();
   return (
-    <div className="border-2 border-white text-white p-4 rounded text-xl">
+    <div className=" text-white p-2 rounded text-xl">
       <Link href={`/tienda/${lowerCaseCat}`}>
-        <h3>{cat}</h3>
+        <p className="hover:text-stone-400">{cat}</p>
       </Link>
     </div>
   );

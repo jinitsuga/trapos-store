@@ -1,6 +1,7 @@
 import { Categories } from "@/app/Components/Dashboard/Catalogue";
 import product from "@/app/models/product";
 import { Product } from "@/app/Components/Dashboard/ProductUploads";
+import CategoriesNav from "@/app/Components/UI/CategoriesNav";
 import { categorySlugs } from "@/app/utils/categories";
 import { searchCategory } from "@/app/utils/searchCategory";
 import ProductCard from "@/app/Components/UI/ProductCard";
@@ -32,14 +33,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
     });
 
   return (
-    <main className="flex flex-col mt-10 justify-center items-center">
-      {products.length ? (
-        <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
-          {productCards}
+    <main className="flex justify-center items-center mt-20 text-white">
+      <div className="flex w-3/4">
+        <CategoriesNav />
+        <div className="flex flex-col items-center justify-center  w-full">
+          <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
+            {products.length ? (
+              productCards
+            ) : (
+              <p>No hay {slug} disponibles en este momento</p>
+            )}
+          </div>
         </div>
-      ) : (
-        <div>No hay {slug} disponibles en este momento.</div>
-      )}
+      </div>
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import Category from "../Components/UI/Category";
 import { categoryList } from "../utils/categories";
+import CategoriesNav from "../Components/UI/CategoriesNav";
 
 export default async function Page() {
   const categoryBtns = categoryList.map((cat, id) => {
@@ -7,8 +8,13 @@ export default async function Page() {
   });
 
   return (
-    <main className="flex flex-col justify-center items-center">
-      <div className="mt-10 flex gap-4">{categoryBtns}</div>
+    <main className="flex justify-center items-center mt-20 text-white">
+      <div className="flex w-3/4 border-2 border-red-400">
+        <CategoriesNav />
+        <div className="flex flex-col items-center justify-center border-2 border-white w-full">
+          <p className="text-xl">Los mas vendidos:</p>
+        </div>
+      </div>
     </main>
   );
 }
