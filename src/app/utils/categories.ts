@@ -7,7 +7,7 @@ export const categoryList: string[] = [
   "Todos",
 ];
 
-export const categorySlugs: Categories[] = [
+export const categorySlugs: string[] = [
   "camisetas",
   "canguros",
   "gorras",

@@ -1,7 +1,7 @@
 import { Categories } from "../Components/Dashboard/Catalogue";
 
-export const searchCategory = async (category: Categories) => {
-  const resp = await (await fetch(`/api/categories?cat=${category}`)).json();
+export const searchCategory = async (category: string) => {
+  const resp = await fetch(`/api/categories?cat=${category}`);
 
-  return resp;
+  return resp.json();
 };
