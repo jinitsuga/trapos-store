@@ -1,6 +1,5 @@
 import Product, { ProductModel } from "../../models/product";
 import { Product as ProdType } from "@/app/Components/Dashboard/ProductUploads";
-import Error from "next/error";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -53,3 +52,18 @@ export async function DELETE(req: NextRequest) {
 }
 
 // Add and export another function for each request method (GET, PUT)
+
+export async function GET(req: NextRequest) {
+  const params = req.nextUrl.searchParams;
+  const id = params.get("id");
+
+  try {
+    const product = await Product.findById(id);
+    if (!product) {
+      return Response.json({ success: false });
+    }
+    return Response.json({ success: true, data: product });
+  } catch (err) {
+    console.log(err);
+  }
+}

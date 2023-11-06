@@ -1,12 +1,6 @@
-import Category from "../Components/UI/Category";
-import { categoryList } from "../utils/categories";
 import CategoriesNav from "../Components/UI/CategoriesNav";
 
 export default async function Page() {
-  const categoryBtns = categoryList.map((cat, id) => {
-    return <Category key={id} cat={cat} />;
-  });
-
   return (
     <main className="flex justify-center items-center mt-20 text-white">
       <div className="flex w-3/4 border-2 border-red-400">
