@@ -1,9 +1,6 @@
-import { Categories } from "@/app/Components/Dashboard/Catalogue";
-import product from "@/app/models/product";
 import { Product } from "@/app/Components/Dashboard/ProductUploads";
 import CategoriesNav from "@/app/Components/UI/CategoriesNav";
 import { categorySlugs } from "@/app/utils/categories";
-import { searchCategory } from "@/app/utils/searchCategory";
 import ProductCard from "@/app/Components/UI/ProductCard";
 
 export async function generateStaticParams() {
@@ -34,7 +31,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex justify-center items-center mt-20 text-white">
-      <div className="flex w-3/4">
+      <div className="flex w-1/2">
         <CategoriesNav />
         <div className="flex flex-col items-center justify-center  w-full">
           <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">

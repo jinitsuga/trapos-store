@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Navbar } from "../Header/Navbar";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,6 +8,17 @@ export default function Footer() {
       <div className="flex justify-around items-center h-full w-full">
         <Navbar vertical />
         <span className="">La Paloma, Uruguay</span>
+        <a
+          target="_blank"
+          href={`https://wa.me/${process.env.PHONE}?text=Hola%21%20Te%20escribo%20desde%20tu%20website%20por%20una%20consulta...`}
+        >
+          <Image
+            alt="whatsapp icon"
+            height={60}
+            width={60}
+            src={"/wsappIcon.png"}
+          ></Image>
+        </a>
       </div>
     </footer>
   );
