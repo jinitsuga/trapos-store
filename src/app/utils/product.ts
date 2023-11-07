@@ -36,6 +36,9 @@ export const deleteProduct = async (id: string) => {
 };
 
 export const getProduct = async (id: string) => {
-  const response = await (await fetch(`/api/product?id=${id}`)).json();
-  console.log(response);
+  const response = await (
+    await fetch(`${process.env.URL}/api/product?id=${id}`)
+  ).json();
+  console.log(response.data);
+  return response.data;
 };

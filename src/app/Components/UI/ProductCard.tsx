@@ -31,10 +31,10 @@ export default function ProductCard({
   // }
 
   const [showModal, setShowModal] = React.useState<boolean>(false);
-
+  console.log(window.location.href);
   return (
     <Link
-      href={"#"}
+      href={`${process.env.NEXT_PUBLIC_URL}/tienda/${type}/${_id}`}
       className="rounded flex text-black bg-white items-center pb-2 gap-2 border-2 w-[300px] 
       hover:shadow-lg hover:shadow-green-800 justify-center flex-col"
     >
