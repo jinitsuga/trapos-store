@@ -7,7 +7,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const { name, img, description, price } = productData;
 
-  console.log(productData);
   return (
     <main className="flex flex-col w-full h-full items-center justify-center  p-2">
       <div className="flex mt-10 w-1/2  justify-center">
@@ -28,9 +27,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           <h3 className="text-3xl font-bold tracking-tight">{name}</h3>
           <p>{description}</p>
           <span>opciones de color</span>
-          <span>tamanos</span>
-          <span className="text-2xl text-yellow-300 mb-4">${price}</span>
-          <button className="bg-gray-200 text-gray-900 w-64 text-2xl hover:bg-gray-400 tracking-tight rounded p-2">
+          <span>tamanoklqwelkqjelkwqjlkjeqls</span>
+          <span className="text-2xl text-yellow-300">${price}</span>
+          <button className="bg-gray-200 text-gray-900 w-[200px] text-xl hover:text-gray-400 tracking-tight rounded p-2">
             Agregar al carrito
           </button>
         </div>
