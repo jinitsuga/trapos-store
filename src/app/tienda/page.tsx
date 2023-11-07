@@ -1,4 +1,7 @@
 import CategoriesNav from "../Components/UI/CategoriesNav";
+import connectDb from "../utils/db";
+
+connectDb();
 
 export default async function Page() {
   return (

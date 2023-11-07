@@ -4,6 +4,7 @@ import { Product } from "../Dashboard/ProductUploads";
 import Link from "next/link";
 import Image from "next/image";
 import EditModal from "./EditModal";
+import { getProduct } from "@/app/utils/product";
 
 type CardTypes = Product & { admin?: boolean };
 
@@ -69,7 +70,13 @@ export default function ProductCard({
           Editar
         </button>
       ) : (
-        <button className="rounded border-black border-2 mb-2 p-1">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            getProduct(_id!);
+          }}
+          className="rounded border-black border-2 mb-2 p-1"
+        >
           Ver mas
         </button>
       )}
