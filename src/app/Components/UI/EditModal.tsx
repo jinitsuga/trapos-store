@@ -41,14 +41,20 @@ export default function EditModal({ ...props }: ModalTypes) {
   const inputStyles =
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
   return (
-    <div className="flex fixed inset-0 items-center z-20 justify-center">
+    <div
+      onClick={(e) => {
+        e.preventDefault();
+        console.log("CLICKED AWAY");
+      }}
+      className="flex fixed inset-0 items-center z-20 justify-center"
+    >
       <div ref={modalRef}>
         <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            await patchProduct(product, props._id!);
-            props.setModal(false);
-          }}
+          // onSubmit={async (e) => {
+          //   console.log("omega");
+          //   await patchProduct(product, props._id!);
+          //   props.setModal(false);
+          // }}
           className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white"
         >
           <label htmlFor="name" className="mb-1">
@@ -108,7 +114,13 @@ export default function EditModal({ ...props }: ModalTypes) {
             <option value="tazas">Tazas</option>
           </select>
           <button
-            type="submit"
+            onClick={async (e) => {
+              console.log("omega");
+              e.preventDefault();
+              await patchProduct(product, props._id!);
+              props.setModal(false);
+            }}
+            type="button"
             className="rounded self-center bg-white text-black w-[80%] text-xl border-black border-2 p-1"
           >
             Hecho

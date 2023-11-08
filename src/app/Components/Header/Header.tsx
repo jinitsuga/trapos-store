@@ -1,11 +1,20 @@
 import * as React from "react";
 import { Navbar } from "./Navbar";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="flex sticky z-20 top-0 bg-black h-[10%] p-4 items-center justify-around font-bold text-xl">
       <div className="flex items-center">
-        <span>Logo</span>
+        <Link href="/">
+          <Image
+            src={"/traposlogo.png"}
+            width={50}
+            height={50}
+            alt="trapos locos logo"
+          ></Image>
+        </Link>
         <Navbar />
       </div>
       <div>
