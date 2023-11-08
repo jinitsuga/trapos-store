@@ -18,8 +18,17 @@ export default function Header() {
         <Navbar />
       </div>
       <div>
-        <ul className="flex gap-2 text-[16px]">
-          <li>Cart icon</li>
+        <ul className="flex justify-center items-center gap-4 text-[16px]">
+          <li>
+            <Link href="#">
+              <Image
+                src={"/cartIcon.png"}
+                width={50}
+                height={50}
+                alt="cart icon"
+              ></Image>
+            </Link>
+          </li>
           <li>
             <a href="/api/auth/signin" className="hover:text-trapo-darkGreen">
               Ingresar
