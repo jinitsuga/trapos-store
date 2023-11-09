@@ -1,16 +1,11 @@
 import { Product } from "@/app/Components/Dashboard/ProductUploads";
 import CategoriesNav from "@/app/Components/UI/CategoriesNav";
-import { categorySlugs } from "@/app/utils/categories";
 import ProductCard from "@/app/Components/UI/ProductCard";
 
-export async function generateStaticParams() {
-  return categorySlugs.map((cat) => {
-    slug: cat;
-  });
-}
-
 async function getProducts(cat: string) {
-  const produs = await fetch(`${process.env.URL}/api/categories?cat=${cat}`);
+  const produs = await fetch(`${process.env.URL}/api/categories?cat=${cat}`, {
+    cache: "no-store",
+  });
   if (!produs.ok) {
     throw new Error("fetching data failed");
   }
@@ -19,10 +14,10 @@ async function getProducts(cat: string) {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
-
+  console.log("SLUUUG");
   const fetchedProducts = await getProducts(slug);
   const products = fetchedProducts.prods;
-
+  console.log(products);
   const productCards =
     products.length &&
     products.map((prod: Product, id: number) => {

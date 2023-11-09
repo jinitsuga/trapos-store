@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest, res: NextResponse) {
   const params = req.nextUrl.searchParams;
   const query = params.get("cat");
-
+  console.log(query);
   switch (query) {
     case "todos":
       try {
@@ -16,6 +16,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     case "camisetas":
       try {
         const prods = await product.find({ type: "camisetas" });
+        console.log("CAMISETAAAAAS");
         return Response.json({ prods });
       } catch (err) {
         return Response.error();
