@@ -3,11 +3,14 @@ import * as React from "react";
 import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
+import Checkbox from "../Checkbox";
 
 export type Product = {
   name?: string;
   description?: string;
   price?: number;
+  size?: string[];
+  color?: string[];
   type?: string;
   img: Array<string>;
   _id?: string;
@@ -22,6 +25,8 @@ export default function Uploads() {
     name: "",
     description: "",
     price: 0,
+    color: [],
+    size: [],
     type: "",
     img: [],
   });
@@ -42,7 +47,15 @@ export default function Uploads() {
     }
   };
   const resetProduct = () => {
-    setProduct({ name: "", description: "", price: 0, type: "", img: [] });
+    setProduct({
+      name: "",
+      description: "",
+      price: 0,
+      color: [],
+      size: [],
+      type: "",
+      img: [],
+    });
   };
   const updateProduct = (e: InputEvents) => {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
@@ -136,6 +149,12 @@ export default function Uploads() {
                   name="price"
                   className={`${inputStyles} w-auto`}
                 ></input>
+                <label>Colores disponibles</label>
+                <ul>
+                  <li>
+                    <Checkbox>Azul</Checkbox>
+                  </li>
+                </ul>
                 <label htmlFor="description" className="mb-1">
                   Descripción:
                 </label>
