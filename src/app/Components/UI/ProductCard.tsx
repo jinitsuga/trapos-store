@@ -57,7 +57,7 @@ export default function ProductCard({
         >
           <Image
             className="absolute top-0 left-0 h-full w-full object-cover"
-            src={img!}
+            src={img[0]}
             fill
             alt={`Imagen de ${name}`}
           />
