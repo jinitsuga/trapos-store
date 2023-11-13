@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 export interface ProductModel extends mongoose.Document {
   name: string;
   type: string;
+  color: Array<string>;
+  size: Array<string>;
   description?: string;
   price: number;
-  img: string;
+  img: Array<string>;
 }
 const productSchema = new mongoose.Schema<ProductModel>({
   name: {
@@ -16,6 +18,14 @@ const productSchema = new mongoose.Schema<ProductModel>({
     type: String,
     required: true,
   },
+  color: {
+    type: [{ type: String }],
+    required: true,
+  },
+  size: {
+    type: [{ type: String }],
+    required: false,
+  },
   description: {
     type: String,
     required: false,
@@ -25,7 +35,7 @@ const productSchema = new mongoose.Schema<ProductModel>({
     required: true,
   },
   img: {
-    type: String,
+    type: [{ type: String }],
     required: true,
   },
 });
