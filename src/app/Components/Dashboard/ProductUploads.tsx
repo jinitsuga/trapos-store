@@ -9,7 +9,7 @@ export type Product = {
   description?: string;
   price?: number;
   type?: string;
-  img?: string;
+  img: Array<string>;
   _id?: string;
 };
 export type InputEvents =
@@ -23,14 +23,17 @@ export default function Uploads() {
     description: "",
     price: 0,
     type: "",
-    img: "",
+    img: [],
   });
   const [error, setError] = React.useState<boolean>(false);
+  const [imgDone, setImgDone] = React.useState<boolean>(false);
   const [uploaded, setUploaded] = React.useState<boolean>(false);
+
+  console.log(product);
 
   const validateFields = () => {
     const { name, price, type, img } = product;
-    if (name == "" || price == 0 || type == "" || img == "") {
+    if (name == "" || price == 0 || type == "" || img!.length == 0) {
       setError(true);
       return false;
     } else {
@@ -39,7 +42,7 @@ export default function Uploads() {
     }
   };
   const resetProduct = () => {
-    setProduct({ name: "", description: "", price: 0, type: "", img: "" });
+    setProduct({ name: "", description: "", price: 0, type: "", img: [] });
   };
   const updateProduct = (e: InputEvents) => {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
@@ -52,7 +55,7 @@ export default function Uploads() {
     <div className="flex flex-col text-white justify-center items-center p-8">
       {!uploaded ? (
         <>
-          {product.img == "" && (
+          {!imgDone && (
             <>
               <h3 className="text-2xl mb-4 ">
                 Selecciona la imagen del producto
@@ -71,23 +74,41 @@ export default function Uploads() {
                 className=""
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
-                  setProduct({ ...product, img: res && res[0].url });
+                  const url: string = res![0].url;
+                  setProduct({
+                    ...product,
+                    img: [...product.img, url],
+                  });
                 }}
                 onUploadError={(error: Error) => {
                   // Do something with the error.
                   alert(`ERROR! ${error.message}`);
                 }}
               />
+              {
+                <div className="flex flex-col justify-center items-center">
+                  <p>Imágenes del producto: {product.img.length}</p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setImgDone(true);
+                    }}
+                    className="text-xl border-2 p-2 border-white rounded text-center m-2"
+                  >
+                    Siguiente
+                  </button>
+                </div>
+              }
             </>
           )}
-          {/* If image is uploaded, load rest of the form */}
-          {product.img !== "" && (
+          {/* If image is uploaded, ask if more images or load rest of form */}
+          {product.img.length > 0 && imgDone && (
             <div className="flex text-xl mb-20 flex-col items-center justify-center gap-4">
               <Image
                 width={150}
                 height={200}
                 className="h-auto"
-                src={product.img ? product.img : ""}
+                src={product.img[0]}
                 alt="uploaded image"
               ></Image>
               <form className="flex flex-col justify-center">
@@ -178,6 +199,7 @@ export default function Uploads() {
           onClick={() => {
             resetProduct();
             setUploaded(false);
+            setImgDone(false);
           }}
           className="bg-white text-black text-xl p-2 rounded"
         >
