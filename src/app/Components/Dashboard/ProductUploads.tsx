@@ -70,9 +70,14 @@ export default function Uploads() {
         <>
           {!imgDone && (
             <>
-              <h3 className="text-2xl mb-4 ">
-                Selecciona la imagen del producto
-              </h3>
+              {!product.img.length ? (
+                <h3 className="text-2xl mb-4 ">
+                  Selecciona la imagen del producto
+                </h3>
+              ) : (
+                <h3 className="text-2xl mb-4 ">Subir mas imágenes</h3>
+              )}
+
               <UploadButton
                 content={{
                   button({ ready }) {
@@ -106,7 +111,7 @@ export default function Uploads() {
                       e.preventDefault();
                       setImgDone(true);
                     }}
-                    className="text-xl border-2 p-2 border-white rounded text-center m-2"
+                    className="text-2xl border-2 p-2 border-white rounded text-center m-2"
                   >
                     Siguiente
                   </button>
@@ -149,10 +154,10 @@ export default function Uploads() {
                   name="price"
                   className={`${inputStyles} w-auto`}
                 ></input>
-                <label>Colores disponibles</label>
+                <label>Colores disponibles:</label>
                 <ul>
                   <li>
-                    <Checkbox>Azul</Checkbox>
+                    <Checkbox color="#22c55e">Azul</Checkbox>
                   </li>
                 </ul>
                 <label htmlFor="description" className="mb-1">
