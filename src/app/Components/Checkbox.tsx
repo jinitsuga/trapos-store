@@ -1,31 +1,46 @@
 "use client";
 import * as React from "react";
-
-import { Product } from "./Dashboard/ProductUploads";
+import { Product, Color } from "./Dashboard/ProductUploads";
 
 type Props = {
   children: string | JSX.Element | JSX.Element[];
-  prodState?: Product;
-  setter?: Function;
+  prodState?: any;
+  setter: Function;
+  colorName?: string;
   color?: string;
+  inputName: string;
 };
 
-export default function Checkbox({ children, color }: Props) {
-  let bgColor = `checked:accent-${color}`;
-
-  if (color == "azul") {
-    bgColor = "#84cc16";
-  } else if (color == "rojo") {
-    bgColor = "#22c55e";
-  }
-
+export default function Checkbox({
+  children,
+  color,
+  prodState,
+  inputName,
+  setter,
+  colorName,
+}: Props) {
+  const updateData = (
+    e: React.FormEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    if (!prodState[inputName].find((item: Color) => item.hex == color)) {
+      setter({
+        ...prodState,
+        [inputName]: [...prodState[inputName], { name: colorName, hex: color }],
+      });
+    } else {
+      const colorIndex = prodState[inputName].findIndex(
+        (item: Color) => item.hex == color
+      );
+      const newColors = prodState[inputName].toSpliced(colorIndex, 1);
+      setter({ ...prodState, [inputName]: newColors });
+    }
+  };
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-16">
       <label>{children}</label>
       <input
-        className={`h-8 w-8 border-2 border-white hover:cursor-pointer ${
-          color ? bgColor : ""
-        }`}
+        className={`h-8 w-8 border-2 border-white hover:cursor-pointer checked:accent-[${color}]`}
         type="checkbox"
       ></input>
     </div>

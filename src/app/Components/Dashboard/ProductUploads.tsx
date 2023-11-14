@@ -5,12 +5,17 @@ import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
 import Checkbox from "../Checkbox";
 
+export type Color = {
+  name: string;
+  hex: string;
+};
+
 export type Product = {
   name?: string;
   description?: string;
   price?: number;
   size?: string[];
-  color?: string[];
+  color?: Color[];
   type?: string;
   img: Array<string>;
   _id?: string;
@@ -155,9 +160,61 @@ export default function Uploads() {
                   className={`${inputStyles} w-auto`}
                 ></input>
                 <label>Colores disponibles:</label>
-                <ul>
+                <ul className="flex items-center justify-center gap-2 mb-4">
                   <li>
-                    <Checkbox color="#22c55e">Azul</Checkbox>
+                    <Checkbox
+                      setter={setProduct}
+                      prodState={product}
+                      colorName="azul"
+                      inputName="color"
+                      color="#1d4ed8"
+                    >
+                      Azul
+                    </Checkbox>
+                  </li>
+                  <li>
+                    <Checkbox
+                      setter={setProduct}
+                      prodState={product}
+                      colorName="gris"
+                      inputName="color"
+                      color="#4b5563"
+                    >
+                      Gris
+                    </Checkbox>
+                  </li>
+                  <li>
+                    <Checkbox
+                      setter={setProduct}
+                      prodState={product}
+                      colorName="blanco"
+                      inputName="color"
+                      color="#fafafa"
+                    >
+                      Blanco
+                    </Checkbox>
+                  </li>
+                  <li>
+                    <Checkbox
+                      setter={setProduct}
+                      prodState={product}
+                      colorName="negro"
+                      inputName="color"
+                      color="#020617"
+                    >
+                      Negro
+                    </Checkbox>
+                  </li>
+                  <li>
+                    <Checkbox
+                      setter={setProduct}
+                      prodState={product}
+                      inputName="color"
+                      color="#15803d"
+                      colorName="verde"
+                    >
+                      Verde
+                    </Checkbox>
                   </li>
                 </ul>
                 <label htmlFor="description" className="mb-1">
