@@ -23,6 +23,7 @@ export default function Checkbox({
     e: React.FormEvent<HTMLInputElement>,
     checked: boolean
   ) => {
+    console.log(prodState);
     if (!prodState[inputName].find((item: Color) => item.hex == color)) {
       setter({
         ...prodState,
@@ -40,6 +41,9 @@ export default function Checkbox({
     <div className="flex flex-col items-center justify-center w-16">
       <label>{children}</label>
       <input
+        onChange={(e) => {
+          updateData(e, e.target.checked);
+        }}
         className={`h-8 w-8 border-2 border-white hover:cursor-pointer checked:accent-[${color}]`}
         type="checkbox"
       ></input>
