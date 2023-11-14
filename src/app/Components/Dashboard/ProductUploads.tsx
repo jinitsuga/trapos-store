@@ -168,6 +168,7 @@ export default function Uploads() {
                       colorName="azul"
                       inputName="color"
                       color="#1d4ed8"
+                      style={{ accentColor: "#1d4ed8" }}
                     >
                       Azul
                     </Checkbox>
@@ -179,6 +180,7 @@ export default function Uploads() {
                       colorName="gris"
                       inputName="color"
                       color="#4b5563"
+                      style={{ accentColor: "#6b7280" }}
                     >
                       Gris
                     </Checkbox>
@@ -189,7 +191,8 @@ export default function Uploads() {
                       prodState={product}
                       colorName="blanco"
                       inputName="color"
-                      color="#fafafa"
+                      color="lime-300"
+                      style={{ accentColor: "#fafafa" }}
                     >
                       Blanco
                     </Checkbox>
@@ -201,6 +204,7 @@ export default function Uploads() {
                       colorName="negro"
                       inputName="color"
                       color="#020617"
+                      style={{ accentColor: "#171717" }}
                     >
                       Negro
                     </Checkbox>
@@ -212,6 +216,7 @@ export default function Uploads() {
                       inputName="color"
                       color="#15803d"
                       colorName="verde"
+                      style={{ accentColor: "#166534" }}
                     >
                       Verde
                     </Checkbox>

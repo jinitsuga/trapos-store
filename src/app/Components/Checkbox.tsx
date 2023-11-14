@@ -9,6 +9,7 @@ type Props = {
   colorName?: string;
   color?: string;
   inputName: string;
+  style?: React.CSSProperties;
 };
 
 export default function Checkbox({
@@ -18,6 +19,7 @@ export default function Checkbox({
   inputName,
   setter,
   colorName,
+  style,
 }: Props) {
   const updateData = (
     e: React.FormEvent<HTMLInputElement>,
@@ -37,6 +39,7 @@ export default function Checkbox({
       setter({ ...prodState, [inputName]: newColors });
     }
   };
+
   return (
     <div className="flex flex-col items-center justify-center w-16">
       <label>{children}</label>
@@ -44,7 +47,8 @@ export default function Checkbox({
         onChange={(e) => {
           updateData(e, e.target.checked);
         }}
-        className={`h-8 w-8 border-2 border-white hover:cursor-pointer checked:accent-[${color}]`}
+        style={style}
+        className={`h-8 w-8 border-2 text-emerald-400 border-white hover:cursor-pointer`}
         type="checkbox"
       ></input>
     </div>
