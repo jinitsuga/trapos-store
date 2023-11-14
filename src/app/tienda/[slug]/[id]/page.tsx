@@ -7,6 +7,9 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const { name, img, description, price } = productData;
 
+  // Create a client-side image 'carousel' component for the product page
+  // pass it the image array received here as a prop so it handles the images.
+  // Add color and size selection buttons by mapping both arrays and rendering these btns.
   return (
     <main className="flex flex-col w-full h-full items-center justify-center  p-2">
       <div className="flex mt-10 w-1/2  justify-center">
