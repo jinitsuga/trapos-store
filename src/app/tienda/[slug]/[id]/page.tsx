@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     <main className="flex flex-col w-full h-full items-center justify-center  p-2">
       <div className="flex mt-10 w-1/2  justify-center">
         <div className="w-[300px] mr-10">
-          <div
+          {/* <div
             className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full
         }`}
           >
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               fill
               alt={`Imagen de ${name}`}
             />
-          </div>
+          </div> */}
         </div>
         <div className="text-gray-200 flex text-xl flex-col gap-4">
           <h3 className="text-3xl font-bold tracking-tight">{name}</h3>
