@@ -28,7 +28,7 @@ export default function Carousel(images: ImagesList) {
         className="absolute top-0 left-0 h-full w-full object-cover"
         src={images[imageCount]}
         fill
-        alt={`Imagen de ${name}`}
+        alt={"Photo of the product"}
       />
       <ul>
         <li>
