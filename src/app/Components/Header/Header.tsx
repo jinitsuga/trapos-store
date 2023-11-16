@@ -1,8 +1,8 @@
-"use client";
 import * as React from "react";
 import { Navbar } from "./Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import AuthBtn from "./SignButton";
 
 export default function Header() {
   return (
@@ -31,9 +31,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <a href="/api/auth/signin" className="hover:text-trapo-darkGreen">
-              Ingresar
-            </a>
+            <AuthBtn />
           </li>
         </ul>
       </div>
