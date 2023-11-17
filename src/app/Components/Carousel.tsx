@@ -7,20 +7,27 @@ type ImagesList = string[];
 const changeImage = (
   images: ImagesList,
   currentImg: number,
-  setter: Function
+  setter: Function,
+  increase?: boolean
 ) => {
-  if (currentImg < images.length - 1) {
-    setter(currentImg + 1);
+  if (increase) {
+    if (currentImg < images.length - 1) {
+      setter(currentImg + 1);
+    } else {
+      setter(0);
+    }
   } else {
-    setter(0);
+    if (currentImg > 0) {
+      setter(currentImg - 1);
+    } else {
+      setter(images.length - 1);
+    }
   }
 };
 
 export default function Carousel({ images }: { images: ImagesList }) {
   const [imageCount, setImageCount] = React.useState<number>(0);
-  console.log(imageCount);
 
-  console.log(images);
   return (
     <div className="w-[400px] min-w-[300px] flex flex-col mr-10">
       <div
@@ -36,14 +43,20 @@ export default function Carousel({ images }: { images: ImagesList }) {
       </div>
       <ul className="flex w-full justify-around">
         <li>
-          <button className="h-8 w-8 text-white text-3xl">⇐</button>
+          <button
+            onClick={() => {
+              changeImage(images, imageCount, setImageCount);
+            }}
+            className="h-8 w-8 text-white text-3xl"
+          >
+            ⇐
+          </button>
         </li>
         <li>
           <button
             className="h-8 w-8 text-white text-3xl"
             onClick={() => {
-              console.log("clicked");
-              changeImage(images, imageCount, setImageCount);
+              changeImage(images, imageCount, setImageCount, true);
             }}
           >
             ⇒
