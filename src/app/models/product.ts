@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import { Color } from "../Components/Dashboard/ProductUploads";
 
 export interface ProductModel extends mongoose.Document {
   name: string;
   type: string;
-  color: Array<string>;
+  color: Array<any>;
   size: Array<string>;
   description?: string;
   price: number;
@@ -19,7 +20,7 @@ const productSchema = new mongoose.Schema<ProductModel>({
     required: true,
   },
   color: {
-    type: [{ type: String }],
+    type: [{ type: Object }],
     required: true,
   },
   size: {

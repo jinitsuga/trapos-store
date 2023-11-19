@@ -4,16 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-
+  console.log(body);
   try {
-    const { name, price, type, description, img } = body;
-    const prod: ProductModel = new Product({
-      name: name,
-      price: price,
-      type: type,
-      description: description,
-      img: img,
-    });
+    const prod = new Product(body);
     const savedProd = await prod.save();
   } catch (e) {
     console.log(e);

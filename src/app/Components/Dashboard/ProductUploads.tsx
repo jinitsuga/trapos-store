@@ -260,14 +260,7 @@ export default function Uploads() {
                     e.preventDefault();
                     const validFields = validateFields();
                     if (validFields) {
-                      const { name, price, description, type, img } = product;
-                      await uploadProduct({
-                        name: name,
-                        price: Number(price),
-                        description: description,
-                        type: type,
-                        img: img,
-                      });
+                      await uploadProduct(product);
                       setUploaded(true);
                     }
                   }}
