@@ -4,6 +4,7 @@ import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
 import Checkbox from "../Checkbox";
+import { colors } from "@/app/data/data";
 
 export type Color = {
   name: string;
@@ -65,6 +66,32 @@ export default function Uploads() {
   const updateProduct = (e: InputEvents) => {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
   };
+
+  // <Checkbox
+  //   setter={setProduct}
+  //   prodState={product}
+  //   colorName="gris"
+  //   inputName="color"
+  //   color="#6b7280"
+  //   style={{ accentColor: "#6b7280" }}
+  // ></Checkbox>;
+
+  const colorBoxes = colors.map((color, id) => {
+    return (
+      <li key={id}>
+        <Checkbox
+          setter={setProduct}
+          prodState={product}
+          colorName={color.name}
+          inputName={"color"}
+          color={color.hex}
+          style={{ accentColor: color.hex }}
+        >
+          {color.name}
+        </Checkbox>
+      </li>
+    );
+  });
 
   const inputStyles =
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
@@ -161,66 +188,7 @@ export default function Uploads() {
                 ></input>
                 <label>Colores disponibles:</label>
                 <ul className="flex items-center justify-center gap-2 mb-4">
-                  <li>
-                    <Checkbox
-                      setter={setProduct}
-                      prodState={product}
-                      colorName="azul"
-                      inputName="color"
-                      color="#1d4ed8"
-                      style={{ accentColor: "#1d4ed8" }}
-                    >
-                      Azul
-                    </Checkbox>
-                  </li>
-                  <li>
-                    <Checkbox
-                      setter={setProduct}
-                      prodState={product}
-                      colorName="gris"
-                      inputName="color"
-                      color="#4b5563"
-                      style={{ accentColor: "#6b7280" }}
-                    >
-                      Gris
-                    </Checkbox>
-                  </li>
-                  <li>
-                    <Checkbox
-                      setter={setProduct}
-                      prodState={product}
-                      colorName="blanco"
-                      inputName="color"
-                      color="lime-300"
-                      style={{ accentColor: "#fafafa" }}
-                    >
-                      Blanco
-                    </Checkbox>
-                  </li>
-                  <li>
-                    <Checkbox
-                      setter={setProduct}
-                      prodState={product}
-                      colorName="negro"
-                      inputName="color"
-                      color="#020617"
-                      style={{ accentColor: "#171717" }}
-                    >
-                      Negro
-                    </Checkbox>
-                  </li>
-                  <li>
-                    <Checkbox
-                      setter={setProduct}
-                      prodState={product}
-                      inputName="color"
-                      color="#15803d"
-                      colorName="verde"
-                      style={{ accentColor: "#166534" }}
-                    >
-                      Verde
-                    </Checkbox>
-                  </li>
+                  {colorBoxes}
                 </ul>
                 <label htmlFor="description" className="mb-1">
                   Descripción:

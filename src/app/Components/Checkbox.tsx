@@ -25,7 +25,6 @@ export default function Checkbox({
     e: React.FormEvent<HTMLInputElement>,
     checked: boolean
   ) => {
-    console.log(prodState);
     if (!prodState[inputName].find((item: Color) => item.hex == color)) {
       setter({
         ...prodState,
