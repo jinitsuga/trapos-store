@@ -4,7 +4,7 @@ import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
 import Checkbox from "../Checkbox";
-import { colors } from "@/app/data/data";
+import { colors, sizes } from "@/app/data/data";
 
 export type Color = {
   name: string;
@@ -88,6 +88,22 @@ export default function Uploads() {
           style={{ accentColor: color.hex }}
         >
           {color.name}
+        </Checkbox>
+      </li>
+    );
+  });
+
+  const sizeBoxes = sizes.map((size, id) => {
+    return (
+      <li key={id}>
+        <Checkbox
+          setter={setProduct}
+          prodState={product}
+          inputName={"size"}
+          size={size}
+          style={{ accentColor: "#6b7280" }}
+        >
+          {size}
         </Checkbox>
       </li>
     );
@@ -187,8 +203,12 @@ export default function Uploads() {
                   className={`${inputStyles} w-auto`}
                 ></input>
                 <label>Colores disponibles:</label>
-                <ul className="flex items-center justify-center gap-2 mb-4">
+                <ul className="flex items-center justify-center  mb-4">
                   {colorBoxes}
+                </ul>
+                <label>Tamaños disponibles</label>
+                <ul className="flex items-center justify-center mb-4">
+                  {sizeBoxes}
                 </ul>
                 <label htmlFor="description" className="mb-1">
                   Descripción:

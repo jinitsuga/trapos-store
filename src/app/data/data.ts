@@ -2,7 +2,7 @@ import { Color } from "../Components/Dashboard/ProductUploads";
 
 export const categories = ["camisetas", "canguros", "gorras", "tazas", "todos"];
 
-export const sizes = ["XXL", "XL", "L", "M", "S"];
+export const sizes: string[] = ["XXL", "XL", "L", "M", "S"];
 
 export const colors: Color[] = [
   { name: "azul", hex: "#1d4ed8" },
