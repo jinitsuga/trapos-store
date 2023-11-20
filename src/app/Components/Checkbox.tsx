@@ -9,6 +9,7 @@ type Props = {
   colorName?: string;
   color?: string;
   inputName: string;
+  size?: string;
   style?: React.CSSProperties;
 };
 
@@ -20,22 +21,41 @@ export default function Checkbox({
   setter,
   colorName,
   style,
+  size,
 }: Props) {
   const updateData = (
     e: React.FormEvent<HTMLInputElement>,
     checked: boolean
   ) => {
-    if (!prodState[inputName].find((item: Color) => item.hex == color)) {
-      setter({
-        ...prodState,
-        [inputName]: [...prodState[inputName], { name: colorName, hex: color }],
-      });
+    if (color) {
+      if (!prodState[inputName].find((item: Color) => item.hex == color)) {
+        setter({
+          ...prodState,
+          [inputName]: [
+            ...prodState[inputName],
+            { name: colorName, hex: color },
+          ],
+        });
+      } else {
+        const colorIndex = prodState[inputName].findIndex(
+          (item: Color) => item.hex == color
+        );
+        const newColors = prodState[inputName].toSpliced(colorIndex, 1);
+        setter({ ...prodState, [inputName]: newColors });
+      }
     } else {
-      const colorIndex = prodState[inputName].findIndex(
-        (item: Color) => item.hex == color
-      );
-      const newColors = prodState[inputName].toSpliced(colorIndex, 1);
-      setter({ ...prodState, [inputName]: newColors });
+      if (!prodState[inputName].find((item: string) => item == size)) {
+        setter({
+          ...prodState,
+          [inputName]: [...prodState[inputName], size],
+        });
+      } else {
+        const sizeId = prodState[inputName].findIndex(
+          (item: string) => item == size
+        );
+        const newSizes = prodState[inputName].toSpliced(sizeId, 1);
+        setter({ ...prodState, [inputName]: newSizes });
+      }
     }
   };
 
