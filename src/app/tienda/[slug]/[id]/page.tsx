@@ -8,7 +8,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   console.log(productData);
   const { name, img, description, price }: Product = productData;
-  console.log(img.length);
   // Add color and size selection buttons by mapping both arrays and rendering as btns.
   return (
     <main className="flex flex-col w-full h-full items-center justify-center  p-2">

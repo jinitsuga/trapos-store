@@ -17,21 +17,7 @@ export default function ProductCard({
   admin,
   _id,
 }: CardTypes) {
-  //   import Image from 'next/image'
-
-  // import { Image as ImageType } from 'lib/shopify/types'
-
-  // export default function ProductImage({ image, shadow = true }: { image: ImageType, shadow?: boolean }) {
-  //   const { url, altText } = image
-  //   return (
-  //     <div className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full ${shadow ? 'shadow-md' : ''}`}>
-  //       <Image className="absolute top-0 left-0 h-full w-full object-cover" src={url} fill alt={altText} />
-  //     </div>
-  //   )
-  // }
-
   const [showModal, setShowModal] = React.useState<boolean>(false);
-  console.log(showModal);
   return (
     <div>
       <Link
@@ -44,13 +30,6 @@ export default function ProductCard({
         className="rounded flex text-black bg-white items-center pb-2 gap-2 border-2 w-[300px] 
       hover:shadow-lg hover:shadow-green-800 justify-center flex-col"
       >
-        {/* <Image
-        width={300}
-        height={175}
-        className="justify-self-start h-auto max-w-[300px]"
-        alt={`Imagen de ${name}`}
-        src={img!}
-      ></Image> */}
         <div
           className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full
         }`}
