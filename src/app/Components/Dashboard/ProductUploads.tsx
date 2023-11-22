@@ -118,7 +118,7 @@ export default function Uploads() {
         <>
           {!imgDone && (
             <>
-              {!product.img.length ? (
+              {!product.img?.length ? (
                 <h3 className="text-2xl mb-4 ">
                   Selecciona la imagen del producto
                 </h3>
@@ -143,7 +143,7 @@ export default function Uploads() {
                   const url: string = res![0].url;
                   setProduct({
                     ...product,
-                    img: [...product.img, url],
+                    img: [...product.img!, url],
                   });
                 }}
                 onUploadError={(error: Error) => {
@@ -153,7 +153,7 @@ export default function Uploads() {
               />
               {
                 <div className="flex flex-col justify-center items-center">
-                  <p>Imágenes del producto: {product.img.length}</p>
+                  <p>Imágenes del producto: {product.img?.length}</p>
                   <button
                     onClick={(e) => {
                       e.preventDefault();
@@ -168,13 +168,13 @@ export default function Uploads() {
             </>
           )}
           {/* If image is uploaded, ask if more images or load rest of form */}
-          {product.img.length > 0 && imgDone && (
+          {product.img?.length! > 0 && imgDone && (
             <div className="flex text-xl mb-20 flex-col items-center justify-center gap-4">
               <Image
                 width={150}
                 height={200}
                 className="h-auto"
-                src={product.img[0]}
+                src={product.img![0]}
                 alt="uploaded image"
               ></Image>
               <form className="flex flex-col justify-center">
