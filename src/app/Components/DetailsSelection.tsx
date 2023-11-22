@@ -28,7 +28,6 @@ export default function Selection({ name, color, size, price, img }: Product) {
       img: img,
     });
   }, []);
-  console.log(selectedProduct);
 
   const findColor = (colorName: string, colors?: Color[]) =>
     colors?.find((item) => item.name === colorName);
@@ -74,7 +73,7 @@ export default function Selection({ name, color, size, price, img }: Product) {
       >
         {colorOptions}
       </select>
-      <label htmlFor="selectedSize">Size: </label>
+      <label htmlFor="selectedSize">Tamaño: </label>
       <select
         onChange={(e) => {
           setSelectedProduct({
