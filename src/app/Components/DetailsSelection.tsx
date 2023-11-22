@@ -47,8 +47,17 @@ export default function Selection({ name, color, size, price, img }: Product) {
       </option>
     );
   });
+
+  const sizeOptions = size?.map((size, id) => {
+    return (
+      <option value={size} className="rounded text-black" key={id}>
+        {size}
+      </option>
+    );
+  });
+
   return (
-    <form>
+    <form className="flex flex-col justify-center">
       <label htmlFor="selectedColor">Color: </label>
       <select
         onChange={(e) => {
@@ -64,6 +73,18 @@ export default function Selection({ name, color, size, price, img }: Product) {
         name="selectedColor"
       >
         {colorOptions}
+      </select>
+      <label htmlFor="selectedSize">Size: </label>
+      <select
+        onChange={(e) => {
+          setSelectedProduct({
+            ...selectedProduct,
+            selectedSize: e.target.value,
+          });
+        }}
+        className="w-24 h-10 m-2 rounded text-black p-2"
+      >
+        {sizeOptions}
       </select>
     </form>
   );
