@@ -4,7 +4,7 @@ import { Product } from "./Dashboard/ProductUploads";
 import { Color } from "./Dashboard/ProductUploads";
 import { capitalize } from "../utils/helpers";
 
-type SelectedProduct = {
+export type SelectedProduct = {
   name?: string;
   color?: Color[];
   size?: string[];
