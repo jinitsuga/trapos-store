@@ -3,6 +3,7 @@ import * as React from "react";
 import { Product } from "./Dashboard/ProductUploads";
 import { Color } from "./Dashboard/ProductUploads";
 import { capitalize } from "../utils/helpers";
+import { useCartStore } from "../data/stateStore";
 
 export type SelectedProduct = {
   name?: string;
@@ -29,6 +30,10 @@ export default function Selection({ name, color, size, price, img }: Product) {
     });
   }, []);
 
+  const cart = useCartStore((state) => state.products);
+  const updateCart = useCartStore((state) => state.addProduct);
+
+  console.log(cart);
   const findColor = (colorName: string, colors?: Color[]) =>
     colors?.find((item) => item.name === colorName);
 
@@ -68,7 +73,7 @@ export default function Selection({ name, color, size, price, img }: Product) {
             ? selectedProduct.selectedColor.hex
             : "",
         }}
-        className={`text-black w-24 h-10 m-2 rounded p-2 text-left`}
+        className={`text-black w-28 h-10 m-2 rounded p-2 text-left`}
         name="selectedColor"
       >
         {colorOptions}
@@ -85,6 +90,16 @@ export default function Selection({ name, color, size, price, img }: Product) {
       >
         {sizeOptions}
       </select>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          const newCart = [...cart, { ...selectedProduct, quantity: 1 }];
+          updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
+        }}
+        className="rounded bg-white  text-black max-w-sm m-2 p-2"
+      >
+        Add to cart
+      </button>
     </form>
   );
 }

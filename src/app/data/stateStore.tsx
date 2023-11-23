@@ -6,14 +6,14 @@ type CartProduct = SelectedProduct & {
 };
 
 type State = {
-  products?: CartProduct[] | undefined;
+  products: CartProduct[];
 };
 
 type Action = {
   addProduct: (products: State["products"]) => void;
 };
 
-const useCartStore = create<State & Action>((set) => ({
-  products: undefined,
+export const useCartStore = create<State & Action>((set) => ({
+  products: [],
   addProduct: (products) => set(() => ({ products: products })),
 }));
