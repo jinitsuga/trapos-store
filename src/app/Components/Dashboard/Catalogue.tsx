@@ -4,6 +4,7 @@ import useSWR from "swr";
 import fetcher from "@/app/utils/fetcher";
 import ProductCard from "../UI/ProductCard";
 import { Product } from "./ProductUploads";
+import { Suspense } from "react";
 
 const Button = ({ btnName, selected, children, ...buttonProps }: any) => {
   return (
@@ -39,7 +40,11 @@ export default function Catalogue() {
   const products =
     data &&
     data.prods.map((item: Product, id: number) => {
-      return <ProductCard key={id} {...item} admin={true} />;
+      return (
+        <Suspense fallback={<p>Cargando...</p>}>
+          <ProductCard key={id} {...item} admin={true} />
+        </Suspense>
+      );
     });
 
   const changeCategory = (cat: Categories) => {

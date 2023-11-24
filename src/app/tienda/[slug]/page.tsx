@@ -1,6 +1,7 @@
 import { Product } from "@/app/Components/Dashboard/ProductUploads";
 import CategoriesNav from "@/app/Components/UI/CategoriesNav";
 import ProductCard from "@/app/Components/UI/ProductCard";
+import { Suspense } from "react";
 
 async function getProducts(cat: string) {
   const produs = await fetch(`${process.env.URL}/api/categories?cat=${cat}`, {
@@ -14,14 +15,17 @@ async function getProducts(cat: string) {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  console.log("SLUUUG");
   const fetchedProducts = await getProducts(slug);
+
   const products = fetchedProducts.prods;
-  console.log(products);
   const productCards =
     products.length &&
     products.map((prod: Product, id: number) => {
-      return <ProductCard key={id} {...prod} />;
+      return (
+        <Suspense fallback={<p>Cargando...</p>}>
+          <ProductCard key={id} {...prod} />
+        </Suspense>
+      );
     });
 
   return (

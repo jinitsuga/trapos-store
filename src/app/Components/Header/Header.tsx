@@ -21,7 +21,7 @@ export default function Header() {
       <div>
         <ul className="flex justify-center items-center gap-4 text-[16px]">
           <li>
-            <Link href="#">
+            <Link href="/cart">
               <Image
                 src={"/cartIcon.png"}
                 width={50}
