@@ -33,7 +33,6 @@ export default function Selection({ name, color, size, price, img }: Product) {
   const cart = useCartStore((state) => state.products);
   const updateCart = useCartStore((state) => state.addProduct);
 
-  console.log(cart);
   const findColor = (colorName: string, colors?: Color[]) =>
     colors?.find((item) => item.name === colorName);
 

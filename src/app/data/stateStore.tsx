@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { SelectedProduct } from "../Components/DetailsSelection";
 
-type CartProduct = SelectedProduct & {
+export type CartProduct = SelectedProduct & {
   quantity: number;
 };
 
