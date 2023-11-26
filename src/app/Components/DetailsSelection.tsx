@@ -92,7 +92,6 @@ export default function Selection({ name, color, size, price, img }: Product) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          const newCart = [...cart, { ...selectedProduct, quantity: 1 }];
           updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
         }}
         className="rounded bg-white  text-black max-w-sm m-2 p-2"
