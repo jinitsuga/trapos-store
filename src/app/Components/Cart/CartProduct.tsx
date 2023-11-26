@@ -14,7 +14,25 @@ export default function CartProduct({
   img,
 }: CartProduct) {
   const cartContents = useCartStore((state) => state.products);
-  const increaseQuantity = useCartStore((state) => state.increaseQty);
+  const increaseQuantity = useCartStore((state) => state.addProduct);
+
+  const updateCart = useCartStore((state) => state.addProduct);
+
+  const findProductId = (
+    name: string | undefined,
+    color: CartProduct["selectedColor"],
+    size: CartProduct["selectedSize"],
+    item: CartProduct
+  ) => {
+    if (
+      name == item.name &&
+      color?.name === item.selectedColor?.name &&
+      size === item.selectedSize
+    ) {
+      return true;
+    }
+  };
+
   return (
     <div className="w-[500px] text-black flex gap-2">
       <div className="flex">
@@ -53,7 +71,13 @@ export default function CartProduct({
           <button
             onClick={(e) => {
               e.preventDefault();
-              increaseQuantity();
+              const index = cartContents.findIndex((item) => {
+                return findProductId(name, selectedColor, selectedSize, item);
+              });
+              const prevProd = cartContents[index];
+              const newProd = { ...prevProd, quantity: prevProd.quantity + 1 };
+              const newCart = cartContents.toSpliced(index, 1, newProd);
+              updateCart(newCart);
             }}
           >
             {">"}

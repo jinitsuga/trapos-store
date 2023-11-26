@@ -27,8 +27,12 @@ export default function Selection({ name, color, size, price, img }: Product) {
       size: size,
       price: price,
       img: img,
+      selectedColor: color && color[0],
+      selectedSize: size && size[0],
     });
   }, []);
+
+  console.log(selectedProduct);
 
   const cart = useCartStore((state) => state.products);
   const updateCart = useCartStore((state) => state.addProduct);
