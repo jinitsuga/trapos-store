@@ -3,6 +3,7 @@ import * as React from "react";
 import { CartProduct } from "@/app/data/stateStore";
 import Image from "next/image";
 import { capitalize } from "@/app/utils/helpers";
+import { useCartStore } from "@/app/data/stateStore";
 
 export default function CartProduct({
   name,
@@ -12,7 +13,8 @@ export default function CartProduct({
   quantity,
   img,
 }: CartProduct) {
-  const increaseQty = () => {};
+  const cartContents = useCartStore((state) => state.products);
+  const increaseQuantity = useCartStore((state) => state.increaseQty);
   return (
     <div className="w-[500px] text-black flex gap-2">
       <div className="flex">
@@ -48,7 +50,14 @@ export default function CartProduct({
           <div className="bg-stone-100 p-2 rounded h-8 text-center w-8">
             {quantity}
           </div>
-          <button>{">"}</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              increaseQuantity();
+            }}
+          >
+            {">"}
+          </button>
         </div>
       </div>
     </div>
