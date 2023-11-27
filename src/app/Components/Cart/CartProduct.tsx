@@ -61,7 +61,7 @@ export default function CartProduct({
           </span>
         </div>
       </div>
-      <div className="flex flex-col self-center  items-center justify-self-end">
+      <div className="flex flex-col self-center  items-center ml-auto">
         <span>${price && price * quantity}</span>
         <div className="flex gap-2">
           <button>{"<"}</button>
