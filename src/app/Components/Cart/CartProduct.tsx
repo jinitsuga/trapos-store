@@ -14,7 +14,6 @@ export default function CartProduct({
   img,
 }: CartProduct) {
   const cartContents = useCartStore((state) => state.products);
-  const increaseQuantity = useCartStore((state) => state.addProduct);
 
   const updateCart = useCartStore((state) => state.addProduct);
 
@@ -35,6 +34,18 @@ export default function CartProduct({
 
   return (
     <div className="sm:w-[500px] mb-2 border-b-2 pb-2 border-stone-200 text-black flex flex-col sm:flex-row max-[640px]:items-center max-[640px]:justify-center sm:gap-2">
+      <button
+        onClick={(e) => {
+          const index = cartContents.findIndex((item) => {
+            return findProductId(name, selectedColor, selectedSize, item);
+          });
+          const newCart = cartContents.toSpliced(index, 1);
+          updateCart(newCart);
+        }}
+        className="text-3xl h-10 self-center hover:text-red-800"
+      >
+        ⓧ
+      </button>
       <div className="flex">
         <Image
           className="border-2 border-stone-400 rounded"
@@ -66,7 +77,28 @@ export default function CartProduct({
           ${price && price * quantity}
         </span>
         <div className="flex gap-2">
-          <button>{"<"}</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              const index = cartContents.findIndex((item) => {
+                return findProductId(name, selectedColor, selectedSize, item);
+              });
+
+              if (cartContents[index].quantity <= 1) {
+                return;
+              }
+
+              const prevProd = cartContents[index];
+              const newProd = {
+                ...prevProd,
+                quantity: prevProd.quantity - 1,
+              };
+              const newCart = cartContents.toSpliced(index, 1, newProd);
+              updateCart(newCart);
+            }}
+          >
+            {"<"}
+          </button>
           <div className="bg-stone-100 p-2 rounded h-8 text-center w-8">
             {quantity}
           </div>

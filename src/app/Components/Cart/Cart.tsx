@@ -11,8 +11,6 @@ export default function Cart() {
     0
   );
 
-  console.log(totalPrice);
-
   const productCards =
     cartContents &&
     cartContents.map((prod, id) => {
