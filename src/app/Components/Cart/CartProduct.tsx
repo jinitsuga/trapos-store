@@ -34,7 +34,7 @@ export default function CartProduct({
   };
 
   return (
-    <div className="w-[500px] text-black flex gap-2">
+    <div className="sm:w-[500px] mb-2 border-b-2 pb-2 border-stone-200 text-black flex flex-col sm:flex-row max-[640px]:items-center max-[640px]:justify-center sm:gap-2">
       <div className="flex">
         <Image
           className="border-2 border-stone-400 rounded"
@@ -61,8 +61,10 @@ export default function CartProduct({
           </span>
         </div>
       </div>
-      <div className="flex flex-col self-center  items-center ml-auto">
-        <span>${price && price * quantity}</span>
+      <div className="flex flex-col self-center  items-center sm:ml-auto">
+        <span className="text-yellow-800 text-xl">
+          ${price && price * quantity}
+        </span>
         <div className="flex gap-2">
           <button>{"<"}</button>
           <div className="bg-stone-100 p-2 rounded h-8 text-center w-8">
@@ -75,7 +77,10 @@ export default function CartProduct({
                 return findProductId(name, selectedColor, selectedSize, item);
               });
               const prevProd = cartContents[index];
-              const newProd = { ...prevProd, quantity: prevProd.quantity + 1 };
+              const newProd = {
+                ...prevProd,
+                quantity: prevProd.quantity + 1,
+              };
               const newCart = cartContents.toSpliced(index, 1, newProd);
               updateCart(newCart);
             }}
