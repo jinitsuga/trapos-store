@@ -16,12 +16,20 @@ type Action = {
 
 export const useCartStore = create<State & Action>((set) => ({
   products: [],
-  addProduct: (products) => set(() => ({ products: products })),
+  addProduct: (products) =>
+    set(() => {
+      localStorage.setItem("cart", JSON.stringify(products));
+      return { products: products };
+    }),
   increaseQty: (products, id) =>
-    set(() => ({
-      products: [
-        ...products,
-        { ...products[id], quantity: products[id].quantity + 1 },
-      ],
-    })),
+    set(() => {
+      const newProducts = {
+        products: [
+          ...products,
+          { ...products[id], quantity: products[id].quantity + 1 },
+        ],
+      };
+      localStorage.setItem("cart", JSON.stringify(newProducts));
+      return newProducts;
+    }),
 }));
