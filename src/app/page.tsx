@@ -16,8 +16,15 @@ export default function Home() {
         <h2 className="text-xl text-trapo-red">
           Los diseños que siempre quisiste.
         </h2>
+        <a href="/tienda">
+          <button className="box rounded text-white text-2xl hover:text-stone-600 p-4 mt-8 tracking-tight font-semibold">
+            Explora nuestra tienda
+          </button>
+        </a>
       </section>
-      <div className="flex flex-wrap gap-2 m-4">{iconLinks}</div>
+      <div className="flex items-center justify-center flex-wrap my-[50px] gap-2">
+        {iconLinks}
+      </div>
     </main>
   );
 }
