@@ -1,7 +1,13 @@
+import CategoryIcon from "./Components/UI/CategoryIcon";
+import { icons } from "./data/data";
+
 export default function Home() {
-  console.log(process.env.MONGO_URI);
+  const iconLinks = icons.map((icon, id) => (
+    <CategoryIcon key={id} {...icon} />
+  ));
+
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex flex-col mb-[100px] justify-center items-center">
       <section className="flex flex-col bg-trapo-brown h-[400px] w-full items-center justify-center">
         {" "}
         <h1 className="text-[60px] font-bold text-white max-w-lg">
@@ -11,6 +17,7 @@ export default function Home() {
           Los diseños que siempre quisiste.
         </h2>
       </section>
+      <div className="flex flex-wrap gap-2 m-4">{iconLinks}</div>
     </main>
   );
 }

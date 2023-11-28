@@ -11,3 +11,26 @@ export const colors: Color[] = [
   { name: "blanco", hex: "#fafafa" },
   { name: "verde", hex: "#166534" },
 ];
+
+export const icons = [
+  {
+    img: "/t-shirt.png",
+    href: "/tienda/camisetas",
+    category: "Camisetas",
+  },
+  {
+    img: "/cap.png",
+    href: "/tienda/gorras",
+    category: "Gorras",
+  },
+  {
+    img: "/hoodie.png",
+    href: "/tienda/canguros",
+    category: "Canguros",
+  },
+  {
+    img: "/coffee-cup.png",
+    href: "/tienda/tazas",
+    category: "Tazas",
+  },
+];
