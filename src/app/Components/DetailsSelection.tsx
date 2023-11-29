@@ -96,7 +96,13 @@ export default function Selection({ name, color, size, price, img }: Product) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
+
+          if (localStorage.getItem("cart")) {
+            const localCart = JSON.parse(localStorage.getItem("cart")!);
+            updateCart([...localCart, { ...selectedProduct, quantity: 1 }]);
+          } else {
+            updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
+          }
         }}
         className="rounded bg-white  text-black max-w-sm m-2 p-2"
       >

@@ -22,7 +22,7 @@ export default function Home() {
           </button>
         </a>
       </section>
-      <div className="flex items-center justify-center flex-wrap my-[50px] gap-2">
+      <div className="flex items-center justify-center flex-wrap mt-[50px] mb-[100px] gap-4">
         {iconLinks}
       </div>
     </main>

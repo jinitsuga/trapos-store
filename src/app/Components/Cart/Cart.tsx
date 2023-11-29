@@ -5,12 +5,18 @@ import CartProduct from "./CartProduct";
 
 export default function Cart() {
   const cartContents = useCartStore((state) => state.products);
+  const updateCart = useCartStore((state) => state.addProduct);
+
+  React.useEffect(() => {
+    localStorage.getItem("cart") &&
+      updateCart(JSON.parse(localStorage.getItem("cart")!));
+  }, []);
 
   const totalPrice = cartContents.reduce(
     (accum, current) => accum + current.quantity * current.price!,
     0
   );
-
+  console.log(cartContents);
   const productCards =
     cartContents &&
     cartContents.map((prod, id) => {
