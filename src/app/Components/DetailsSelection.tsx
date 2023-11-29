@@ -46,7 +46,10 @@ export default function Selection({ name, color, size, price, img }: Product) {
         className={`${
           color.name === "black" ? "text-white" : "text-black"
         } rounded`}
-        style={{ backgroundColor: color.hex, color: "black" }}
+        style={{
+          backgroundColor: color.hex,
+          color: color.name === "black" ? "white" : "black",
+        }}
         key={id}
         value={color.name}
       >

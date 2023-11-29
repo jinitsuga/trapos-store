@@ -17,7 +17,7 @@ export default function CartIcon() {
         height={50}
         alt="cart icon"
       ></Image>
-      {cartLength > 0 && <span>({cartLength})</span>}
+      {cartLength > 0 && <span className="text-xl">({cartLength})</span>}
     </Link>
   );
 }
