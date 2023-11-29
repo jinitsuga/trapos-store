@@ -7,7 +7,9 @@ import { useCartStore } from "@/app/data/stateStore";
 export default function CartIcon() {
   const cartContents = useCartStore((state) => state.products);
 
-  const cartLength = JSON.parse(localStorage.getItem("cart")!).length;
+  const cartLength =
+    localStorage.getItem("cart") &&
+    JSON.parse(localStorage.getItem("cart")!).length;
 
   return (
     <Link className="flex items-center" href="/cart">
@@ -17,7 +19,7 @@ export default function CartIcon() {
         height={50}
         alt="cart icon"
       ></Image>
-      {cartLength > 0 && <span className="text-xl">({cartLength})</span>}
+      {cartLength && <span className="text-xl">({cartLength})</span>}
     </Link>
   );
 }
