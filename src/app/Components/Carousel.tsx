@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
+import { Suspense } from "react";
 
 type ImagesList = string[];
 
@@ -34,12 +35,14 @@ export default function Carousel({ images }: { images: ImagesList }) {
         className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full
 }`}
       >
-        <Image
-          className="absolute top-0 left-0 h-full w-full object-cover"
-          src={images[imageCount]}
-          fill
-          alt={"Photo of the product"}
-        />
+        <Suspense fallback={<span>Cargando...</span>}>
+          <Image
+            className="absolute top-0 left-0 h-full w-full object-cover"
+            src={images[imageCount]}
+            fill
+            alt={"Photo of the product"}
+          />
+        </Suspense>
       </div>
       <ul className="flex w-full justify-around">
         <li>

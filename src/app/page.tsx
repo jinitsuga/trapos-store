@@ -1,11 +1,13 @@
 import CategoryIcon from "./Components/UI/CategoryIcon";
 import { icons } from "./data/data";
+import connectDb from "./utils/db";
 
 export default function Home() {
   const iconLinks = icons.map((icon, id) => (
     <CategoryIcon key={id} {...icon} />
   ));
 
+  connectDb();
   return (
     <main className="flex flex-col mb-[100px] justify-center items-center">
       <section className="flex flex-col bg-trapo-brown h-[400px] w-full items-center justify-center">

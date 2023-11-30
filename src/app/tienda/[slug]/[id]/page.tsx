@@ -16,6 +16,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <Carousel images={img} />
         <div className="text-gray-200 flex text-xl flex-col gap-4">
           <h3 className="text-3xl font-bold tracking-tight">{name}</h3>
+          <span className="text-2xl text-yellow-300">${price}</span>
           <p>{description}</p>
           <Selection
             name={name}
@@ -24,10 +25,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             color={color}
             size={size}
           />
-          <span className="text-2xl text-yellow-300">${price}</span>
-          <button className="bg-gray-200 text-gray-900 w-[200px] text-xl hover:text-gray-400 tracking-tight rounded p-2">
-            Agregar al carrito
-          </button>
         </div>
       </div>
     </main>

@@ -4,6 +4,7 @@ import { Product } from "./Dashboard/ProductUploads";
 import { Color } from "./Dashboard/ProductUploads";
 import { capitalize } from "../utils/helpers";
 import { useCartStore } from "../data/stateStore";
+import Link from "next/link";
 
 export type SelectedProduct = {
   name?: string;
@@ -19,6 +20,7 @@ export default function Selection({ name, color, size, price, img }: Product) {
   const [selectedProduct, setSelectedProduct] = React.useState<
     SelectedProduct | undefined
   >(undefined);
+  const [productAdded, setProductAdded] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     setSelectedProduct({
@@ -31,8 +33,6 @@ export default function Selection({ name, color, size, price, img }: Product) {
       selectedSize: size && size[0],
     });
   }, []);
-
-  console.log(selectedProduct);
 
   const cart = useCartStore((state) => state.products);
   const updateCart = useCartStore((state) => state.addProduct);
@@ -96,21 +96,40 @@ export default function Selection({ name, color, size, price, img }: Product) {
       >
         {sizeOptions}
       </select>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
+      {!productAdded ? (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setProductAdded(true);
 
-          if (localStorage.getItem("cart")) {
-            const localCart = JSON.parse(localStorage.getItem("cart")!);
-            updateCart([...localCart, { ...selectedProduct, quantity: 1 }]);
-          } else {
-            updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
-          }
-        }}
-        className="rounded bg-white  text-black max-w-sm m-2 p-2"
-      >
-        Add to cart
-      </button>
+            if (localStorage.getItem("cart")) {
+              const localCart = JSON.parse(localStorage.getItem("cart")!);
+              updateCart([...localCart, { ...selectedProduct, quantity: 1 }]);
+            } else {
+              updateCart([...cart, { ...selectedProduct, quantity: 1 }]);
+            }
+          }}
+          className="rounded bg-white mt-4 hover:text-trapo-green  text-black max-w-[150px] m-2 p-2"
+        >
+          Agregar
+        </button>
+      ) : (
+        <div className="flex flex-col">
+          <p className="mb-4">Producto agregado!</p>
+          <Link
+            className="text-stone-300 text-xl hover:text-trapo-green"
+            href={"/tienda"}
+          >
+            Volver a la tienda
+          </Link>
+          <Link
+            className="text-stone-300 text-xl hover:text-trapo-green"
+            href={"/cart"}
+          >
+            Ver carrito
+          </Link>
+        </div>
+      )}
     </form>
   );
 }

@@ -38,6 +38,7 @@ export default function Cart() {
         <span>Total:</span>
         <span className="font-semibold">${totalPrice}</span>
       </div>
+      <button>Pagar</button>
     </div>
   );
 }
