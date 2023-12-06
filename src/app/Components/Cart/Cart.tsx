@@ -2,6 +2,7 @@
 import * as React from "react";
 import { useCartStore } from "@/app/data/stateStore";
 import CartProduct from "./CartProduct";
+import { PayButton } from "./PayBtn";
 
 export default function Cart() {
   const cartContents = useCartStore((state) => state.products);
@@ -38,11 +39,7 @@ export default function Cart() {
         <span>Total:</span>
         <span className="font-semibold">${totalPrice}</span>
       </div>
-      <a className="self-center" href="/checkout">
-        <button className="rounded text-xl  bg-white mt-4 hover:text-stone-400  text-black w-[200px] m-2 p-2">
-          Completar orden
-        </button>
-      </a>
+      <PayButton products={cartContents} />
     </div>
   );
 }
