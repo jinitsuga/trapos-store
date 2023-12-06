@@ -115,18 +115,18 @@ export default function Selection({ name, color, size, price, img }: Product) {
         </button>
       ) : (
         <div className="flex flex-col">
-          <p className="mb-4">Producto agregado!</p>
+          <p className="mb-4 text-stone-300">Producto agregado!</p>
           <Link
-            className="text-stone-300 text-xl hover:text-trapo-green"
+            className="text-stone-100 text-xl hover:text-trapo-green"
             href={"/tienda"}
           >
-            Volver a la tienda
+            → Volver a la tienda
           </Link>
           <Link
-            className="text-stone-300 text-xl hover:text-trapo-green"
+            className="text-stone-100 text-xl hover:text-trapo-green"
             href={"/cart"}
           >
-            Ver carrito
+            → Ver carrito
           </Link>
         </div>
       )}

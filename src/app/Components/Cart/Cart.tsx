@@ -38,7 +38,11 @@ export default function Cart() {
         <span>Total:</span>
         <span className="font-semibold">${totalPrice}</span>
       </div>
-      <button>Pagar</button>
+      <a className="self-center" href="/checkout">
+        <button className="rounded text-xl  bg-white mt-4 hover:text-stone-400  text-black w-[200px] m-2 p-2">
+          Completar orden
+        </button>
+      </a>
     </div>
   );
 }
