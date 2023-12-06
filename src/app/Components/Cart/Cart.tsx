@@ -16,7 +16,7 @@ export default function Cart() {
     (accum, current) => accum + current.quantity * current.price!,
     0
   );
-  console.log(cartContents);
+
   const productCards =
     cartContents &&
     cartContents.map((prod, id) => {
