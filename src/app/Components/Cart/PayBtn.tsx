@@ -14,17 +14,17 @@ export const PayButton = ({ products }: PayButtonProps) => {
     const genLink = async () => {
       setLoading(true);
 
-      //   try {
-      //     const resp = await fetch("/api/checkout", {
-      //       method: "POST",
-      //       headers: { "Content-Type": "application/json" },
-      //       body: JSON.stringify(products),
-      //     });
+      try {
+        const resp = await fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(products),
+        }).then((res) => res.json());
 
-      //     setUrl(resp.url);
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
+        console.log(resp);
+      } catch (error) {
+        console.error(error);
+      }
       setLoading(false);
     };
     genLink();
