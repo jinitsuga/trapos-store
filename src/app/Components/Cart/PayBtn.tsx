@@ -7,7 +7,7 @@ type PayButtonProps = {
 };
 
 export const PayButton = ({ products }: PayButtonProps) => {
-  const [url, setUrl] = React.useState<string | null>(null);
+  const [url, setUrl] = React.useState<string | undefined>(undefined);
   const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ export const PayButton = ({ products }: PayButtonProps) => {
           body: JSON.stringify(products),
         }).then((res) => res.json());
 
-        console.log(resp);
+        setUrl(resp.data);
       } catch (error) {
         console.error(error);
       }
@@ -32,14 +32,21 @@ export const PayButton = ({ products }: PayButtonProps) => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          console.log(products);
-        }}
-        className="rounded text-xl  bg-white mt-4  text-black w-[200px] m-2 p-2"
-      >
-        Espera...
-      </button>
+      {loading ? (
+        <button
+          disabled
+          className="rounded self-center text-xl  bg-white mt-4  text-black w-[200px] m-2 p-2"
+        >
+          Espera...
+        </button>
+      ) : (
+        <a
+          href={url}
+          className="rounded text-center self-center text-xl hover:text-trapo-green bg-white mt-4  text-black w-[200px] m-2 p-2"
+        >
+          Completar pago
+        </a>
+      )}
     </>
   );
 };

@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function AuthBtn() {
   const { data: session } = useSession();
 
-  console.log(session);
   if (session) {
     return (
       <nav className="flex gap-2">
