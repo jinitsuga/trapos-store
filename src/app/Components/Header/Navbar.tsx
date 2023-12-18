@@ -16,7 +16,7 @@ export function Navbar({ vertical }: NavTypes) {
           <a href="/tienda">Tienda</a>
         </li>
         <li className="mx-4 hover:text-trapo-darkGreen">
-          <a href="#">Contacto</a>
+          <a href="/contacto">Contacto</a>
         </li>
         <li className="mx-4 hover:text-trapo-darkGreen">
           <a href="#">Acerca de</a>
