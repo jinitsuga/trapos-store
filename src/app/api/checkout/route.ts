@@ -47,7 +47,6 @@ export async function POST(req: NextRequest) {
     });
 
     url = pref.sandbox_init_point!;
-    console.log(url);
 
     return Response.json({ success: true, data: url });
   } catch (error) {
