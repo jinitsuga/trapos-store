@@ -4,8 +4,10 @@ import { Color } from "../Components/Dashboard/ProductUploads";
 export interface ProductModel extends mongoose.Document {
   name: string;
   type: string;
+  subType?: string;
   color: Array<any>;
-  size: Array<string>;
+  size?: Array<string>;
+  kidSize?: Array<string>;
   description?: string;
   price: number;
   img: Array<string>;
@@ -19,11 +21,19 @@ const productSchema = new mongoose.Schema<ProductModel>({
     type: String,
     required: true,
   },
+  subType: {
+    type: String,
+    required: false,
+  },
   color: {
     type: [{ type: Object }],
     required: true,
   },
   size: {
+    type: [{ type: String }],
+    required: false,
+  },
+  kidSize: {
     type: [{ type: String }],
     required: false,
   },

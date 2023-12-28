@@ -4,7 +4,7 @@ import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
 import Checkbox from "../Checkbox";
-import { colors, sizes } from "@/app/data/data";
+import { colors, sizes, kidSizes } from "@/app/data/data";
 
 export type Color = {
   name: string;
@@ -203,10 +203,10 @@ export default function Uploads() {
                   className={`${inputStyles} w-auto`}
                 ></input>
                 <label>Colores disponibles:</label>
-                <ul className="flex items-center justify-center  mb-4">
+                <ul className="flex flex-wrap items-center justify-center max-w-[200px]  mb-4">
                   {colorBoxes}
                 </ul>
-                <label>Tamaños disponibles</label>
+                <label>Tamaños disponibles:</label>
                 <ul className="flex items-center justify-center mb-4">
                   {sizeBoxes}
                 </ul>

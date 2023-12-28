@@ -55,7 +55,7 @@ export default function ProductCard({
             }}
             className="rounded hover:bg-black hover:text-white text-xl border-black border-2 mb-2 p-1"
           >
-            Editarnpm run
+            Editar
           </button>
         ) : (
           <button

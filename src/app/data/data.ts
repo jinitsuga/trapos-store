@@ -12,7 +12,7 @@ export const categories = [
   "todos",
 ];
 
-export const tshirtsSubCats: string[] = [
+export const tshirtTags: string[] = [
   "arte",
   "retro",
   "geek",
@@ -26,6 +26,18 @@ export const tshirtsSubCats: string[] = [
 ];
 
 export const sizes: string[] = ["XXL", "XL", "L", "M", "S"];
+
+export const kidSizes: string[] = [
+  "0",
+  "2",
+  "4",
+  "6",
+  "8",
+  "10",
+  "12",
+  "14",
+  "16",
+];
 
 export const colors: Color[] = [
   { name: "azul", hex: "#1d4ed8" },
