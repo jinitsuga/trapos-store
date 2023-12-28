@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <section className="flex flex-col items-center justify-center text-white pt-10">
-      <h2 className="text-3xl tracking-tight font-semibold">
+      <h2 className="text-3xl text-center tracking-tight font-semibold">
         Consulta lo que necesites
       </h2>
       <ul className="flex flex-col mt-6 gap-4 items-start">

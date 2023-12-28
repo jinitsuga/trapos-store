@@ -1,8 +1,4 @@
-import mercadopago, {
-  MercadoPagoConfig,
-  Payment,
-  Preference,
-} from "mercadopago";
+import { MercadoPagoConfig, Preference } from "mercadopago";
 import { NextRequest, NextResponse } from "next/server";
 import { CartProduct } from "@/app/data/stateStore";
 
