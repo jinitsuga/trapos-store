@@ -138,14 +138,6 @@ export default function Uploads() {
     );
   });
 
-  const tagOptions = tshirtTags.map((tag, id) => {
-    return (
-      <option key={id} value={tag}>
-        {capitalize(tag)}
-      </option>
-    );
-  });
-
   const categoryOptions = categories.map((cat, id) => {
     return (
       <option key={id} value={cat}>

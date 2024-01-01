@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const params = req.nextUrl.searchParams;
+  console.log(params);
   const query = params.get("cat");
-  console.log(query);
+  console.log(params.get("tag"));
   switch (query) {
     case "todos":
       try {
@@ -15,8 +16,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
       }
     case "camisetas":
       try {
-        const prods = await product.find({ type: "camisetas" });
-        console.log("CAMISETAAAAAS");
+        let prods = [];
+        if (params.get("tag")) {
+          const tag = params.get("tag");
+          prods = await product.find({ type: "camisetas", subType: tag });
+        } else {
+          prods = await product.find({ type: "camisetas" });
+        }
+
         return Response.json({ prods });
       } catch (err) {
         return Response.error();

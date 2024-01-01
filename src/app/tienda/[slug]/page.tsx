@@ -33,12 +33,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className="flex w-1/2">
         <CategoriesNav />
         <div className="flex flex-col items-center justify-center  w-full">
-          <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
-            {products.length ? (
-              productCards
-            ) : (
-              <p>No hay {slug} disponibles en este momento</p>
-            )}
+          <ul className="flex gap-2 mb-2">
+            <li>tag1</li>
+            <li>tag1</li>
+            <li>tag1</li>
+          </ul>
+          <div className="flex flex-col items-center justify-center  w-full">
+            <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
+              {products.length ? (
+                productCards
+              ) : (
+                <p>No hay {slug} disponibles en este momento</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
