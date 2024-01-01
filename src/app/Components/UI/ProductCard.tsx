@@ -58,15 +58,9 @@ export default function ProductCard({
             Editar
           </button>
         ) : (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              getProduct(_id!);
-            }}
-            className="rounded border-black border-2 mb-2 p-1"
-          >
+          <span className="rounded border-black border-2 mb-2 p-1">
             Ver mas
-          </button>
+          </span>
         )}
         {showModal && (
           <EditModal
