@@ -4,7 +4,13 @@ import { UploadButton } from "../../utils/uploadthing";
 import Image from "next/image";
 import { uploadProduct } from "../../utils/product";
 import Checkbox from "../Checkbox";
-import { colors, sizes, kidSizes, tshirtTags } from "@/app/data/data";
+import {
+  colors,
+  sizes,
+  kidSizes,
+  tshirtTags,
+  categories,
+} from "@/app/data/data";
 import { capitalize } from "@/app/utils/helpers";
 
 export type Color = {
@@ -140,6 +146,14 @@ export default function Uploads() {
     );
   });
 
+  const categoryOptions = categories.map((cat, id) => {
+    return (
+      <option key={id} value={cat}>
+        {capitalize(cat)}
+      </option>
+    );
+  });
+
   const inputStyles =
     "text-black rounded p-2 focus:outline-none focus:ring focus:ring-green-700 mb-2";
 
@@ -268,10 +282,7 @@ export default function Uploads() {
                   name="type"
                 >
                   <option value="">--Elige categoría--</option>
-                  <option value="camisetas">Camisetas</option>
-                  <option value="canguros">Canguros</option>
-                  <option value="gorras">Gorras</option>
-                  <option value="tazas">Tazas</option>
+                  {categoryOptions}
                 </select>
                 {product.type == "camisetas" && (
                   <>

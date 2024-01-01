@@ -41,7 +41,7 @@ export default function Catalogue() {
     data &&
     data.prods.map((item: Product, id: number) => {
       return (
-        <Suspense fallback={<p>Cargando...</p>}>
+        <Suspense key={id} fallback={<p>Cargando...</p>}>
           <ProductCard key={id} {...item} admin={true} />
         </Suspense>
       );
