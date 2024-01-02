@@ -29,7 +29,16 @@ export default function ProductsDisplay({ products, slug }: DisplayType) {
             </Suspense>
           );
         })
-      : "";
+      : prods?.length &&
+        prods
+          .filter((prod) => prod.subType == selectedTag)
+          .map((prod: Product, id: number) => {
+            return (
+              <Suspense key={id} fallback={<p>Cargando...</p>}>
+                <ProductCard key={id} {...prod} />
+              </Suspense>
+            );
+          });
 
   const tags = tshirtTags.sort().map((tag, id) => {
     return (
