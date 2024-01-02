@@ -4,7 +4,6 @@ import { Product } from "../Dashboard/ProductUploads";
 import Link from "next/link";
 import Image from "next/image";
 import EditModal from "./EditModal";
-import { getProduct } from "@/app/utils/product";
 
 type CardTypes = Product & { admin?: boolean };
 

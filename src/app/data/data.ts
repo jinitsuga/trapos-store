@@ -23,6 +23,7 @@ export const tshirtTags: string[] = [
   "humor",
   "política",
   "cultura",
+  "todas",
 ];
 
 export const sizes: string[] = ["XXL", "XL", "L", "M", "S"];
