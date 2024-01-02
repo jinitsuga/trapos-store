@@ -1,10 +1,20 @@
 import product from "../../models/product";
 import { NextRequest, NextResponse } from "next/server";
+import { categories } from "@/app/data/data";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const params = req.nextUrl.searchParams;
 
   const query = params.get("cat");
+
+  const categoryCase = async (prodType: string) => {
+    try {
+      const prods = await product.find({ type: prodType });
+      return Response.json({ prods });
+    } catch (err) {
+      return Response.error();
+    }
+  };
 
   switch (query) {
     case "todos":
@@ -29,25 +39,18 @@ export async function GET(req: NextRequest, res: NextResponse) {
         return Response.error();
       }
     case "gorras":
-      try {
-        const prods = await product.find({ type: "gorras" });
-        return Response.json({ prods });
-      } catch (err) {
-        return Response.error();
-      }
+      return categoryCase("gorras");
     case "tazas":
-      try {
-        const prods = await product.find({ type: "tazas" });
-        return Response.json({ prods });
-      } catch (err) {
-        return Response.error();
-      }
+      return categoryCase("tazas");
     case "canguros":
-      try {
-        const prods = await product.find({ type: "canguros" });
-        return Response.json({ prods });
-      } catch (err) {
-        return Response.error();
-      }
+      return categoryCase("canguros");
+    case "musculosas":
+      return categoryCase("musculosas");
+    case "manga larga":
+      return categoryCase("manga larga");
+    case "buzos":
+      return categoryCase("buzos");
+    case "camperas":
+      return categoryCase("camperas");
   }
 }
