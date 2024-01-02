@@ -13,7 +13,6 @@ type DisplayType = {
 export default function ProductsDisplay({ products, slug }: DisplayType) {
   const [prods, setProds] = React.useState<Product[] | undefined>();
   const [selectedTag, setSelectedTag] = React.useState<string>("todas");
-  console.log(selectedTag);
 
   React.useEffect(() => {
     setProds(products);

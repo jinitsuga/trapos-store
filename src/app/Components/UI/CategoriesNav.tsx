@@ -1,9 +1,8 @@
 import * as React from "react";
-import { categoryList } from "@/app/utils/categories";
 import Category from "./Category";
-
+import { categories } from "@/app/data/data";
 export default function CategoriesNav() {
-  const categoryBtns = categoryList.map((cat, id) => {
+  const categoryBtns = categories.map((cat, id) => {
     return (
       <li>
         <Category key={id} cat={cat} />
