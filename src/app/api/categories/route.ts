@@ -19,6 +19,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         let prods = [];
         if (params.get("tag")) {
           const tag = params.get("tag");
+          console.log(tag);
           prods = await product.find({ type: "camisetas", subType: tag });
         } else {
           prods = await product.find({ type: "camisetas" });
