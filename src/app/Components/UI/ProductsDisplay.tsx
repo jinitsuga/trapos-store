@@ -18,6 +18,9 @@ export default function ProductsDisplay({ products, slug }: DisplayType) {
     setProds(products);
   }, []);
 
+  // If a subType is selected (tshirt tags), filter the prods array before mapping,
+  // otherwise return all cards.
+
   const productCards =
     selectedTag == "todas"
       ? prods?.length &&
@@ -63,7 +66,7 @@ export default function ProductsDisplay({ products, slug }: DisplayType) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center  w-full">
+    <div className="flex flex-col items-center justify-start  w-full">
       {slug === "camisetas" && (
         <ul className="flex flex-wrap items-center justify-center gap-2 mb-2 max-w-md">
           {tags}

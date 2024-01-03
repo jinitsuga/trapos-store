@@ -12,7 +12,9 @@ export default function CategoriesNav() {
 
   return (
     <nav className="flex flex-col justify-self-end ">
-      <ul>{categoryBtns}</ul>
+      <ul className="flex flex-row sm:flex-col flex-wrap justify-center">
+        {categoryBtns}
+      </ul>
     </nav>
   );
 }
