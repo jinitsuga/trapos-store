@@ -43,7 +43,7 @@ export default function ProductCard({
         <div className="text-left flex flex-col gap-2 ml-4 w-full">
           <span className="text-stone-500 text-sm">{type}</span>
           <h3 className="text-xl font-bold">{name}</h3>
-          <p className="text-[14px] h-[65px]">{description}</p>
+          <p className="text-[14px] h-[65px] overflow-hidden">{description}</p>
           <span className="text-yellow-700 text-xl">${price}</span>
         </div>
         {admin ? (

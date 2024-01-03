@@ -258,7 +258,7 @@ export default function Uploads() {
                   onChange={(e) => {
                     updateProduct(e);
                   }}
-                  maxLength={120}
+                  maxLength={300}
                   placeholder="Describe el producto brevemente"
                   className={`${inputStyles}`}
                   name="description"
