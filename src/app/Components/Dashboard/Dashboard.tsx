@@ -3,7 +3,7 @@ import * as React from "react";
 import Uploads from "./ProductUploads";
 import Catalogue from "./Catalogue";
 
-type Displays = "upload" | "catalogue";
+type Displays = "upload" | "catalogue" | "banner";
 
 export default function Dashboard() {
   const [display, setDisplay] = React.useState<Displays>("upload");
@@ -37,6 +37,18 @@ export default function Dashboard() {
             } w-[175px] rounded border-2 border-white p-2 hover:text-stone-400`}
           >
             Ver catálogo
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => {
+              changeDisplay("banner");
+            }}
+            className={`${
+              display == "banner" ? "text-stone-400 border-stone-400" : ""
+            } w-[175px] rounded border-2 border-white p-2 hover:text-stone-400`}
+          >
+            Cambiar banner
           </button>
         </li>
       </ul>
