@@ -51,8 +51,6 @@ export default function Uploads() {
   const [imgDone, setImgDone] = React.useState<boolean>(false);
   const [uploaded, setUploaded] = React.useState<boolean>(false);
 
-  console.log(product);
-
   const validateFields = () => {
     const { name, price, type, img } = product;
     if (name == "" || price == 0 || type == "" || img!.length == 0) {

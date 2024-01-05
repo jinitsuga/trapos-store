@@ -1,6 +1,5 @@
 import product from "../../models/product";
 import { NextRequest, NextResponse } from "next/server";
-import { categories } from "@/app/data/data";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const params = req.nextUrl.searchParams;

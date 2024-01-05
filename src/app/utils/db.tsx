@@ -29,12 +29,14 @@ async function connectDb() {
   }
   try {
     cached.conn = await cached.promise;
+    console.log("CONNECTED TO MONGODB");
+    return cached.conn;
   } catch (e) {
+    console.error("MongoDB connection error:", e);
     cached.promise = null;
     throw e;
   }
-  console.log("CONNECTED TO MONGODB");
-  return cached.conn;
+  // console.log("CONNECTED TO MONGODB");
 }
 
 export default connectDb;
