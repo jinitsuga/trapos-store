@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex justify-center items-center mt-20 text-white">
-      <div className="flex flex-col sm:flex-row w-1/2">
+      <div className="flex flex-col sm:flex-row w-full gap-2  sm:w-1/2">
         <CategoriesNav />
         <ProductsDisplay slug={slug} products={products} />
       </div>

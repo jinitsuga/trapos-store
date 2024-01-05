@@ -33,7 +33,7 @@ export default function CartProduct({
   };
 
   return (
-    <div className="sm:w-[500px] mb-2 border-b-2 pb-2 border-stone-200 text-black flex flex-col sm:flex-row max-[640px]:items-center max-[640px]:justify-center sm:gap-2">
+    <div className="sm:w-[500px] mb-2 border-b-2 pb-4 border-stone-800 text-black flex flex-col sm:flex-row max-[640px]:items-center max-[640px]:justify-center sm:gap-2">
       <button
         onClick={(e) => {
           const index = cartContents.findIndex((item) => {

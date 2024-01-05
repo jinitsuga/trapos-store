@@ -30,7 +30,7 @@ export default function Carousel({ images }: { images: ImagesList }) {
   const [imageCount, setImageCount] = React.useState<number>(0);
 
   return (
-    <div className="w-[400px] min-w-[300px] flex flex-col mr-10">
+    <div className="w-[200px] sm:w-[400px]  flex flex-col sm:mr-10">
       <div
         className={`relative overflow-hidden rounded-[4.75%_/_3.5%] after:block after:pb-[140%] w-full
 }`}

@@ -33,7 +33,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-4 bg-stone-300 rounded mb-40">
+    <div className="flex flex-col gap-2 p-4 bg-stone-300 rounded max-[640px]:w-[80%] mb-40">
       <div className=" flex flex-col gap-2"> {productCards}</div>
       <div className="flex text-xl w-full justify-around text-stone-900">
         <span>Total:</span>

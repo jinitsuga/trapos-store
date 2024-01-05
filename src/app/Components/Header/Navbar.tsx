@@ -8,7 +8,7 @@ export function Navbar({ vertical }: NavTypes) {
   return (
     <nav className="mx-2 text-base font-medium">
       <ul
-        className={`flex ${
+        className={`flex flex-col sm:flex-row ${
           vertical == true ? "flex-col" : ""
         } bg-trapo-brown p-2 rounded`}
       >
