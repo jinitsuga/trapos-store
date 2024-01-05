@@ -4,9 +4,9 @@ declare global {
   var mongoose: any;
 }
 
-const MONGO_URI = process.env.MONGO_URI!;
+// const MONGO_URI = process.env.MONGO_URI!;
 
-if (!MONGO_URI) {
+if (!process.env.MONGO_URI) {
   throw new Error("redefine mongodb_uri environment variable");
 }
 
@@ -23,9 +23,11 @@ async function connectDb() {
     const opts = {
       bufferCommands: false,
     };
-    cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose
+      .connect(process.env.MONGO_URI!, opts)
+      .then((mongoose) => {
+        return mongoose;
+      });
   }
   try {
     cached.conn = await cached.promise;
