@@ -78,15 +78,6 @@ export default function Uploads() {
     setProduct({ ...product, [e.currentTarget.name]: e.currentTarget.value });
   };
 
-  // <Checkbox
-  //   setter={setProduct}
-  //   prodState={product}
-  //   colorName="gris"
-  //   inputName="color"
-  //   color="#6b7280"
-  //   style={{ accentColor: "#6b7280" }}
-  // ></Checkbox>;
-
   const colorBoxes = colors.map((color, id) => {
     return (
       <li key={id}>

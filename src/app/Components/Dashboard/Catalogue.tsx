@@ -29,8 +29,6 @@ export type Categories =
   | "todos"
   | "";
 
-// Tal vez explorar como deshabilitar el caching automatico de data
-
 export default function Catalogue() {
   const [category, setCategory] = React.useState<Categories | "">("todos");
   const { data, error, isLoading }: any = useSWR(
