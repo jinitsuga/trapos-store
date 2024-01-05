@@ -68,7 +68,7 @@ export default function ProductsDisplay({ products, slug }: DisplayType) {
   return (
     <div className="flex flex-col items-center justify-start  w-full">
       {slug === "camisetas" && (
-        <ul className="flex flex-wrap items-center justify-center gap-2 mb-2 max-w-md">
+        <ul className="flex flex-wrap items-center justify-center gap-2 mb-4 max-w-lg ">
           {tags}
         </ul>
       )}
