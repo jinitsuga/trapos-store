@@ -10,13 +10,21 @@ export type SelectedProduct = {
   name?: string;
   color?: Color[];
   size?: string[];
+  kidSize?: string[];
   price?: number;
   img?: string[];
   selectedColor?: Color;
   selectedSize?: string;
 };
 
-export default function Selection({ name, color, size, price, img }: Product) {
+export default function Selection({
+  name,
+  color,
+  size,
+  kidSize,
+  price,
+  img,
+}: Product) {
   const [selectedProduct, setSelectedProduct] = React.useState<
     SelectedProduct | undefined
   >(undefined);
@@ -27,6 +35,7 @@ export default function Selection({ name, color, size, price, img }: Product) {
       name: name,
       color: color,
       size: size,
+      kidSize: kidSize,
       price: price,
       img: img,
       selectedColor: color && color[0],
@@ -58,13 +67,16 @@ export default function Selection({ name, color, size, price, img }: Product) {
     );
   });
 
-  const sizeOptions = size?.map((size, id) => {
-    return (
-      <option value={size} className="rounded text-black" key={id}>
-        {size}
-      </option>
-    );
-  });
+  const allSizes = [...size!, ...kidSize!];
+  const sizeOptions = allSizes
+    ?.sort((a: any, b: any) => b - a)
+    .map((size, id) => {
+      return (
+        <option value={size} className="rounded text-black" key={id}>
+          {size}
+        </option>
+      );
+    });
 
   return (
     <form className="flex flex-col justify-center">

@@ -11,7 +11,9 @@ if (!process.env.MONGO_URI) {
 }
 
 let cached = global.mongoose;
+
 if (!cached) {
+  console.log("cached undefined");
   cached = global.mongoose = { conn: null, promise: null };
 }
 
@@ -39,7 +41,6 @@ async function connectDb() {
     cached.promise = null;
     throw e;
   }
-  // console.log("CONNECTED TO MONGODB");
 }
 
 export default connectDb;
