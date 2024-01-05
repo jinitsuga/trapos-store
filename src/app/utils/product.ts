@@ -39,6 +39,6 @@ export const getProduct = async (id: string) => {
   const response = await (
     await fetch(`${process.env.URL}/api/product?id=${id}`)
   ).json();
-  console.log(response.data);
+
   return response.data;
 };

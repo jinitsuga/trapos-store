@@ -44,19 +44,11 @@ export default function EditModal({ ...props }: ModalTypes) {
     <div
       onClick={(e) => {
         e.preventDefault();
-        console.log("CLICKED AWAY");
       }}
       className="flex fixed inset-0 items-center z-20 justify-center"
     >
       <div ref={modalRef}>
-        <form
-          // onSubmit={async (e) => {
-          //   console.log("omega");
-          //   await patchProduct(product, props._id!);
-          //   props.setModal(false);
-          // }}
-          className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white"
-        >
+        <form className="flex flex-col gap-2 p-4 rounded border-2 border-white bg-trapo-black text-white">
           <label htmlFor="name" className="mb-1">
             Nombre del producto:
           </label>
@@ -115,7 +107,6 @@ export default function EditModal({ ...props }: ModalTypes) {
           </select>
           <button
             onClick={async (e) => {
-              console.log("omega");
               e.preventDefault();
               await patchProduct(product, props._id!);
               props.setModal(false);

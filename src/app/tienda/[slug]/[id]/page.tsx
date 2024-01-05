@@ -7,7 +7,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const productData: Product = await getProduct(id);
 
-  console.log(productData);
   const { name, img, description, price, color, size }: Product = productData;
   // Add color and size selection buttons by mapping both arrays and rendering as btns.
   return (
