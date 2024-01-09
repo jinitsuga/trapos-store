@@ -19,6 +19,7 @@ if (!cached) {
 
 async function connectDb() {
   console.log("Attempting to connect to MongoDB...");
+  console.log(process.env.MONGO_URI);
   if (cached.conn) {
     return cached.conn;
   }
