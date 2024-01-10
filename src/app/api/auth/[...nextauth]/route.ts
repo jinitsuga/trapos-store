@@ -6,7 +6,7 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { MongoClient } from "mongodb";
 
 const {
-  MONGO_URI,
+  MONGODB_URI,
   SMTP_HOST,
   SMTP_PORT,
   SMTP_USER,
@@ -17,7 +17,7 @@ const {
 
 const adminEmails = ADMIN_EMAILS?.split(",");
 
-const client = new MongoClient(MONGO_URI || "");
+const client = new MongoClient(MONGODB_URI || "");
 const clientPromise = client.connect();
 
 const authOptions: NextAuthOptions = {

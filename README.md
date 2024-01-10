@@ -6,7 +6,7 @@ UploadThing for storing images, and the MercadoPago SDK to handle payments.
 ```
 
 
-MONGO_URI = your db's connection URI
+MONGODB_URI = your db's connection URI
 
 NEXTAUTH_URL =
 NEXTAUTH_SECRET = secret for your Next Auth
