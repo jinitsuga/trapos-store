@@ -18,7 +18,7 @@ declare global {
 // }
 
 async function connectDb() {
-  mongoose.connect(process.env.MONGODB_URI!, { bufferCommands: false });
+  return mongoose.connect(process.env.MONGODB_URI!, { bufferCommands: false });
 
   // console.log("Attempting to connect to MongoDB...");
   // console.log(process.env.MONGODB_URI);
