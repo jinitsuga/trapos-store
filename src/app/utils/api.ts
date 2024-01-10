@@ -38,8 +38,14 @@ const api = {
             })
           ),
         };
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        console.log(
+          "this is the error =>",
+          err,
+          err?.message!,
+          err?.status!,
+          err?.toString()
+        );
         throw new Error("Fetching data failed");
       }
     },
