@@ -1,24 +1,25 @@
 import CategoriesNav from "@/app/Components/UI/CategoriesNav";
 import ProductsDisplay from "@/app/Components/UI/ProductsDisplay";
 import product from "@/app/models/product";
+import api from "@/app/utils/api";
 
-async function getProducts(cat: string) {
-  try {
-    let prods;
-    if (cat === "todos") {
-      prods = await product.find({}).lean().exec();
-    } else {
-      prods = await product.find({ type: cat }).lean().exec();
-    }
-    return { prods };
-  } catch (err) {
-    throw new Error("Fetching data failed");
-  }
-}
+// async function getProducts(cat: string) {
+//   try {
+//     let prods;
+//     if (cat === "todos") {
+//       prods = await product.find({}).lean().exec();
+//     } else {
+//       prods = await product.find({ type: cat }).lean().exec();
+//     }
+//     return { prods };
+//   } catch (err) {
+//     throw new Error("Fetching data failed");
+//   }
+// }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const fetchedProducts = await getProducts(slug);
+  const fetchedProducts = await api.product.list(slug);
   const products = fetchedProducts.prods as any;
   return (
     <main className="flex justify-center items-center mt-20 text-white">
