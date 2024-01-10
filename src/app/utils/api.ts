@@ -1,11 +1,10 @@
 import product from "../models/product";
 import connectDb from "./db";
 
-connectDb();
-
 const api = {
   product: {
     list: async (cat: string) => {
+      connectDb();
       try {
         let prods;
         if (cat === "todos") {
