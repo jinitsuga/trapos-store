@@ -4,7 +4,7 @@ import connectDb from "./db";
 const api = {
   product: {
     list: async (cat: string) => {
-      connectDb();
+      await connectDb();
       try {
         let prods;
         if (cat === "todos") {
