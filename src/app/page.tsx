@@ -7,7 +7,7 @@ export default async function Home() {
     <CategoryIcon key={id} {...icon} />
   ));
 
-  await connectDb();
+  // await connectDb();
 
   return (
     <main className="flex flex-col mb-[100px] justify-center items-center">

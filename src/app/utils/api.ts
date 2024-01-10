@@ -13,7 +13,31 @@ const api = {
         } else {
           prods = await product.find({ type: cat }).lean().exec();
         }
-        return { prods };
+        return {
+          prods: prods.map(
+            ({
+              name,
+              color,
+              type,
+              subType,
+              kidSize,
+              size,
+              price,
+              description,
+              img,
+            }) => ({
+              name,
+              color,
+              type,
+              subType,
+              kidSize,
+              size,
+              price,
+              description,
+              img,
+            })
+          ),
+        };
       } catch (err) {
         throw new Error("Fetching data failed");
       }
