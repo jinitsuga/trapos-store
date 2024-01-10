@@ -8,8 +8,10 @@ export default function CartIcon() {
   const cartContents = useCartStore((state) => state.products);
 
   const cartLength =
-    localStorage.getItem("cart") &&
-    JSON.parse(localStorage.getItem("cart")!).length;
+    typeof window != "undefined"
+      ? localStorage.getItem("cart") &&
+        JSON.parse(localStorage.getItem("cart")!).length
+      : 0;
 
   return (
     <Link className="flex items-center" href="/cart">
