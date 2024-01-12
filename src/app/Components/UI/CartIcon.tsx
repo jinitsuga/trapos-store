@@ -7,6 +7,7 @@ import { useCartStore } from "@/app/data/stateStore";
 export default function CartIcon() {
   const [cartLength, setCartLength] = React.useState<number>(0);
   const cartContents = useCartStore((state) => state.products);
+  console.log("cart length =>", cartContents.length);
 
   React.useEffect(() => {
     setCartLength(
@@ -15,7 +16,7 @@ export default function CartIcon() {
             JSON.parse(localStorage.getItem("cart")!).length
         : 0
     );
-  }, []);
+  }, [localStorage.getItem("cart")]);
 
   return (
     <Link className="flex items-center" href="/cart">
