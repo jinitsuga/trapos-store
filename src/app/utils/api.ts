@@ -50,6 +50,17 @@ const api = {
         throw new Error("Fetching data failed");
       }
     },
+    getProduct: async (id: string) => {
+      await connectDb();
+
+      try {
+        const prod = await product.findById(id);
+        console.log(prod);
+        return prod;
+      } catch (error) {
+        console.log("getproduct error =>", error);
+      }
+    },
   },
 };
 export default api;

@@ -1,11 +1,11 @@
-import { getProduct } from "@/app/utils/product";
 import Carousel from "@/app/Components/Carousel";
 import { Product } from "@/app/Components/Dashboard/ProductUploads";
 import Selection from "@/app/Components/DetailsSelection";
+import api from "@/app/utils/api";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const productData: Product = await getProduct(id);
+  const productData: Product = await api.product.getProduct(id);
 
   const { name, img, description, price, color, size, kidSize }: Product =
     productData;
