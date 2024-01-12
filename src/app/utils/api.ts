@@ -24,6 +24,7 @@ const api = {
               price,
               description,
               img,
+              _id,
             }) => ({
               name,
               color,
@@ -34,6 +35,7 @@ const api = {
               price,
               description,
               img,
+              _id,
             })
           ),
         };
