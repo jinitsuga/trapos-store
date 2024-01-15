@@ -1,7 +1,9 @@
 import product from "../../models/product";
 import { NextRequest, NextResponse } from "next/server";
+import connectDb from "@/app/utils/db";
 
 export async function GET(req: NextRequest, res: NextResponse) {
+  await connectDb();
   const params = req.nextUrl.searchParams;
 
   const query = params.get("cat");

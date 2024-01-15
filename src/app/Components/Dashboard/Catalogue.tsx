@@ -55,7 +55,6 @@ export default function Catalogue() {
         <li>
           <Button
             onClick={() => {
-              console.log("MARIAAA");
               changeCategory("camisetas");
             }}
             btnName="camisetas"
@@ -67,7 +66,6 @@ export default function Catalogue() {
         <li>
           <Button
             onClick={() => {
-              console.log("MARIAAA");
               changeCategory("canguros");
             }}
             selected={category}
@@ -79,7 +77,6 @@ export default function Catalogue() {
         <li>
           <Button
             onClick={() => {
-              console.log("MARIAAA");
               changeCategory("gorras");
             }}
             selected={category}
@@ -91,7 +88,6 @@ export default function Catalogue() {
         <li>
           <Button
             onClick={() => {
-              console.log("MARIAAA");
               changeCategory("tazas");
             }}
             selected={category}
@@ -103,7 +99,6 @@ export default function Catalogue() {
         <li>
           <Button
             onClick={() => {
-              console.log("MARIAAA");
               changeCategory("todos");
             }}
             selected={category}
@@ -118,7 +113,6 @@ export default function Catalogue() {
       {isLoading && <div> Cargando... </div>}
       {data ? (
         <div className="flex max-w-[650px] items-center justify-center flex-wrap mb-40 gap-4">
-          {" "}
           {products}
         </div>
       ) : (
