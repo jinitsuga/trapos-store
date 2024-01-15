@@ -1,15 +1,17 @@
 import Product, { ProductModel } from "../../models/product";
 import { Product as ProdType } from "@/app/Components/Dashboard/ProductUploads";
 import { NextRequest, NextResponse } from "next/server";
+import connectDb from "@/app/utils/db";
 
 export async function POST(req: NextRequest) {
+  await connectDb();
   const body = await req.json();
 
   try {
     const prod = new Product(body);
     const savedProd = await prod.save();
   } catch (e) {
-    console.log(e);
+    console.log("upload error =>", e);
   }
 
   return NextResponse.json("producto agregado");

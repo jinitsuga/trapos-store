@@ -16,7 +16,7 @@ export default function CartIcon() {
             JSON.parse(localStorage.getItem("cart")!).length
         : 0
     );
-  }, [localStorage.getItem("cart")]);
+  }, [localStorage.getItem("cart")!]);
 
   return (
     <Link className="flex items-center" href="/cart">
