@@ -18,6 +18,8 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
+  await connectDb();
+
   const body: ProdType = await req.json();
   const params = req.nextUrl.searchParams;
   const id = params.get("id");
@@ -35,6 +37,8 @@ export async function PUT(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
+  await connectDb();
+
   const params = req.nextUrl.searchParams;
   const id = params.get("id");
 
@@ -49,6 +53,8 @@ export async function DELETE(req: NextRequest) {
 // Add and export another function for each request method (GET, PUT)
 
 export async function GET(req: NextRequest) {
+  await connectDb();
+
   const params = req.nextUrl.searchParams;
   const id = params.get("id");
 
