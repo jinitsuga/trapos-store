@@ -14,10 +14,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     <main className="flex flex-col w-full h-full items-center justify-center mb-20 p-2">
       <div className="flex flex-col lg:flex-row mt-10 w-full md:w-3/4 items-center justify-center">
         <Carousel images={img} />
-        <div className="text-gray-200 flex text-xl flex-col gap-4">
+        <div className="text-gray-200 flex text-xl flex-col gap-4 p-[4px]">
           <h3 className="text-3xl font-bold tracking-tight">{name}</h3>
           <span className="text-2xl text-yellow-300">${price}</span>
-          <p className="lg:max-w-[75%] w-full">{description}</p>
+          <p className="lg:max-w-[525px] w-full">{description}</p>
           <Selection
             name={name}
             img={img}
